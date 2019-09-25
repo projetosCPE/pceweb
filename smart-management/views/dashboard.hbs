@@ -5,10 +5,11 @@
   <p class="header_dashboard"> Modera </p>
 </header>
 
-<body class="bodydash">
+<body class="">
 
-<div class="background " style="">
-  <div class="barra-lat col-md-2" align="left">
+  <div id="menu_dashboard_aberto" class="barra-lat col-md-2" align="left">
+    <a href="#"  onclick="getElementById('menu_dashboard_aberto').style.display = 'none';"
+     onclick="getElementById('menu_dashboard_fechado').style.display = 'block';" align="right"> X </a>
     <br>
     <h4 style="color:white;">ADMINISTRADOR</h4>
     <br>
@@ -21,13 +22,20 @@
     <a  style="color:white;text-decoration:none" href="/login">Clientes x Aparelhos</a>
     <br>
   </div>
-</div>
+
+  <div id="menu_dashboard_fechado" class="barra-lat col-md-1" align="left">
+    <a href="#" onclick="getElementById('menu_dashboard_aberto').style.display = 'block';"
+    onclick="getElementById('menu_dashboard_fechado').style.display = 'none';"> Abrir </a>
+  </div>
 
 </body
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
 
 <script src="/javascripts/homeadmin.js"></script>
+<script src="/javascripts/dashboard.js"></script>
+<script type="text/javascript">
 
+</script>
 <div class="footer" align="center">
   <footer class="dashboard_page">
     <br>
