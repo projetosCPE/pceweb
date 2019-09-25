@@ -7049,12 +7049,20 @@ a {
   width: 100%;
   float: left;
   background: #0000FF;
-  padding-bottom: 3%;
-  padding-top: 3%; }
+  position: absolute;
+  bottom: 0; }
 
 .footer p {
   color: white; }
 
 /*Page One-Login end*/
+.dashboard_page {
+  background: #254487;
+  height: 60px; }
+
+/* Dashboard */
+.barra-lat {
+  background: #00acce;
+  height: 550px; }
 
 /*# sourceMappingURL=style.css.map */
