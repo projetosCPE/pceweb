@@ -11,6 +11,7 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Login' });
 });
 
+/* POST Login */
 router.post('/login', function(req, res, next) {
   const user = req.body.user;
   console.log(user);
@@ -20,6 +21,11 @@ router.post('/login', function(req, res, next) {
   }).catch((error) => {
     console.log(error);
   });
+});
+
+/* GET dashboard page. */
+router.get('/dashboard', (req, res) => {
+  res.render('dashboard', { title: 'homeadmin', layout: 'layout' });
 });
 
 module.exports = router;
