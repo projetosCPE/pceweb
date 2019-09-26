@@ -28,4 +28,9 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard', { title: 'homeadmin', layout: 'layout' });
 });
 
+/* GET dcadastrAparelho page. */
+router.get('/cadastroAparelho', (req, res) => {
+  res.render('cadastroAparelho', { title: 'homeadmin', layout: 'layout' });
+});
+
 module.exports = router;

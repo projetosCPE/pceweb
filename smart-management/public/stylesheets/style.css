@@ -7027,7 +7027,7 @@ body {
 a {
   color: #00B7FF; }
 
-/*Page One-Login inicial*/
+/*Page Login inicial*/
 .input-group input {
   padding-top: 20px;
   text-align: center;
@@ -7048,14 +7048,14 @@ a {
   text-align: center;
   width: 100%;
   float: left;
-  background: #0000FF;
+  background: #254487;
   position: absolute;
   bottom: 0; }
 
 .footer p {
   color: white; }
 
-/*Page One-Login end*/
+/*Page Login end*/
 .dashboard_page {
   background: #254487;
   height: 60px; }
@@ -7064,5 +7064,7 @@ a {
 .barra-lat {
   background: #00acce;
   height: 550px; }
+
+/*Page Cadastro de aparaelhos -1*/
 
 /*# sourceMappingURL=style.css.map */
