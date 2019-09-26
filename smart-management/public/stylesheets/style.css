@@ -7052,7 +7052,8 @@ a {
   float: left;
   background: #254487;
   position: absolute;
-  bottom: 0px; }
+  bottom: 0px;
+  z-index: 2; }
 
 .footer p {
   color: white; }
@@ -7062,7 +7063,26 @@ a {
   background: linear-gradient(to right, #254487, #00a8cc);
   height: 60px; }
 
+.img_logo {
+  width: 200px;
+  height: auto;
+  padding-left: 30px; }
+
+.img_usuario {
+  width: 20px;
+  height: auto;
+  margin-top: 20px;
+  margin-right: 10%; }
+
 /* Dashboard */
+.menu_fechado {
+  align: left;
+  background: #00acce;
+  width: 60px;
+  height: 100%;
+  color: white;
+  position: fixed; }
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -7073,13 +7093,16 @@ a {
   background-color: #00acce;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 40px;
   padding-bottom: 60px; }
+
+.sidenav h4 {
+  color: white; }
 
 .sidenav a {
   padding: 1px 1px 1px 32px;
   text-decoration: none;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
   text-align: left; }
