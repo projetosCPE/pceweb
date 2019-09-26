@@ -6,34 +6,33 @@
 </header>
 
 <body class="">
-
-  <div id="menu_dashboard_aberto" class="barra-lat col-md-2" align="left">
-    <a href="#"  onclick="getElementById('menu_dashboard_aberto').style.display = 'none';"
-     onclick="getElementById('menu_dashboard_fechado').style.display = 'block';" align="right"> X </a>
-    <br>
-    <h4 style="color:white;">ADMINISTRADOR</h4>
-    <br>
-    <a  style="color:white;text-decoration:none" href="/login">Cadastro dos Aparelhos</a>
-    <br>
-    <a  style="color:white;text-decoration:none" href="/login">Movimentação dos Aparelhos</a>
-    <br>
-    <a  style="color:white;text-decoration:none" href="/login">Cadastro dos Clientes</a>
-    <br>
-    <a  style="color:white;text-decoration:none" href="/login">Clientes x Aparelhos</a>
-    <br>
+  <div id="mySidenav" class="sidenav">
+    <div class="">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <h4 style="color:white;">ADMINISTRADOR</h4>
+      <br>
+      <a  style="color:white;text-decoration:none" href="/login">Cadastro dos Aparelhos</a>
+      <a  style="color:white;text-decoration:none" href="/login">Movimentação dos Aparelhos</a>
+      <a  style="color:white;text-decoration:none" href="/login">Cadastro dos Clientes</a>
+      <a  style="color:white;text-decoration:none" href="/login">Clientes x Aparelhos</a>
+    </div>
   </div>
 
-  <div id="menu_dashboard_fechado" class="barra-lat col-md-1" align="left">
-    <a href="#" onclick="getElementById('menu_dashboard_aberto').style.display = 'block';"
-    onclick="getElementById('menu_dashboard_fechado').style.display = 'none';"> Abrir </a>
-  </div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 
-</body
+</body>
+
+
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
-
-<script src="/javascripts/homeadmin.js"></script>
-<script src="/javascripts/dashboard.js"></script>
+<script src="/public/javascripts/dashboard.js"></script>
 <script type="text/javascript">
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
 
 </script>
 <div class="footer" align="center">
