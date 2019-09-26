@@ -17,7 +17,7 @@ router.post('/login', function(req, res, next) {
   console.log(user);
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((logado) => {
     console.log(logado);
-    res.redirect('/login');
+    res.redirect('/dashboard');
   }).catch((error) => {
     console.log(error);
   });
