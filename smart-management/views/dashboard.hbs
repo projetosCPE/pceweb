@@ -5,29 +5,36 @@
   <p class="header_dashboard"> Modera </p>
 </header>
 
-<body class="bodydash">
-
-<div class="background " style="">
-  <div class="barra-lat col-md-2" align="left">
-    <br>
-    <h4 style="color:white;">ADMINISTRADOR</h4>
-    <br>
-    <a  style="color:white;text-decoration:none" href="/login">Cadastro dos Aparelhos</a>
-    <br>
-    <a  style="color:white;text-decoration:none" href="/login">Movimentação dos Aparelhos</a>
-    <br>
-    <a  style="color:white;text-decoration:none" href="/login">Cadastro dos Clientes</a>
-    <br>
-    <a  style="color:white;text-decoration:none" href="/login">Clientes x Aparelhos</a>
-    <br>
+<body class="">
+  <div id="mySidenav" class="sidenav">
+    <div class="">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <h4 style="color:white;">ADMINISTRADOR</h4>
+      <br>
+      <a  style="color:white;text-decoration:none" href="/login">Cadastro dos Aparelhos</a>
+      <a  style="color:white;text-decoration:none" href="/login">Movimentação dos Aparelhos</a>
+      <a  style="color:white;text-decoration:none" href="/login">Cadastro dos Clientes</a>
+      <a  style="color:white;text-decoration:none" href="/login">Clientes x Aparelhos</a>
+    </div>
   </div>
-</div>
 
-</body
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+</body>
+
+
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+<script src="/public/javascripts/dashboard.js"></script>
+<script type="text/javascript">
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
 
-<script src="/javascripts/homeadmin.js"></script>
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
 
+</script>
 <div class="footer" align="center">
   <footer class="dashboard_page">
     <br>
