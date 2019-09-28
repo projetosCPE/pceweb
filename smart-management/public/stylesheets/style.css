@@ -7066,7 +7066,7 @@ a {
 .img_logo {
   width: 200px;
   height: auto;
-  padding-left: 30px; }
+  padding-left: 3%; }
 
 .img_usuario {
   width: 20px;
@@ -7082,6 +7082,9 @@ a {
   height: 100%;
   color: white;
   position: fixed; }
+
+.menu_fechado span:hover {
+  color: #20609e; }
 
 .sidenav {
   height: 100%;
@@ -7108,7 +7111,11 @@ a {
   text-align: left; }
 
 .sidenav a:hover {
-  color: #f1f1f1; }
+  color: #20609e; }
+
+.sidenav hr {
+  width: 75%;
+  border-top: 1px solid #00829c; }
 
 .sidenav .closebtn {
   position: absolute;
