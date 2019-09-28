@@ -25,7 +25,7 @@ router.post('/login', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', (req, res) => {
-  res.render('dashboard', { title: 'homeadmin', layout: 'layout' });
+  res.render('LayoutDashboard', { title: 'homeadmin', layout: 'layout' });
 });
 
 /* GET dcadastrAparelho page. */
