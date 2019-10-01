@@ -30,7 +30,7 @@ router.get('/dashboard', (req, res) => {
 
 /* GET dcadastrAparelho page. */
 router.get('/cadastroAparelho', (req, res) => {
-  res.render('cadastroAparelho', { title: 'homeadmin', layout: 'layout' });
+  res.render('cadastroAparelho', { title: 'homeadmin', layout: 'layoutdashboard' });
 });
 
 module.exports = router;
