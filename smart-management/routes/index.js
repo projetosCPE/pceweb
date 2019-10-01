@@ -17,7 +17,7 @@ router.post('/login', function(req, res, next) {
   console.log(user);
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((logado) => {
     console.log(logado);
-    res.redirect('/login');
+    res.redirect('/dashboard');
   }).catch((error) => {
     console.log(error);
   });
@@ -25,12 +25,12 @@ router.post('/login', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', (req, res) => {
-  res.render('dashboard', { title: 'homeadmin', layout: 'layout' });
+  res.render('LayoutDashboard', { title: 'homeadmin', layout: 'layout' });
 });
 
 /* GET dcadastrAparelho page. */
 router.get('/cadastroAparelho', (req, res) => {
-  res.render('cadastroAparelho', { title: 'homeadmin', layout: 'layout' });
+  res.render('cadastroAparelho', { title: 'homeadmin', layout: 'layoutdashboard' });
 });
 
 module.exports = router;
