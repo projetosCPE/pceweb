@@ -7107,7 +7107,7 @@ a {
   padding-top: 40px;
   padding-bottom: 60px; }
 
-.sidenav h4 {
+.sidenav h5 {
   color: white; }
 
 .sidenav a {
@@ -7138,6 +7138,9 @@ a {
   .sidenav a {
     font-size: 18px; } }
 
+.ld-body {
+  z-index: 1; }
+
 .center {
   margin: auto;
   width: 50%; }
@@ -7147,5 +7150,15 @@ a {
 /*Page movimentação aparelho*/
 .movap-nomes {
   margin: 0 0 0 0; }
+
+.movap-titulo {
+  margin-top: 40px; }
+
+.movap-titulo h4 {
+  color: #00aed0;
+  font-weight: bold; }
+
+.movap-boxcinza {
+  background: #d4d4d4; }
 
 /*# sourceMappingURL=style.css.map */
