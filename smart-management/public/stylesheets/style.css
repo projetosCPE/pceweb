@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -7136,5 +7137,8 @@ a {
 
 /*PAGE CADASTROAPARELHO*/
 /*FINAL PAGE CADASTROAPARELHO*/
+/*Page movimentação aparelho*/
+.movap-nomes {
+  margin: 0 0 0 0; }
 
 /*# sourceMappingURL=style.css.map */
