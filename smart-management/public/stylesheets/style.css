@@ -7020,18 +7020,11 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
-body {
-  background-image: url("../images/imagem-back.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  text-align: center;
-  background: #f0f4f7; }
-
-a {
-  color: #00B7FF; }
-
 /*Page Login inicial*/
+.img-login {
+  background-image: url("/images/imagem_back.jpg");
+  width: 100%; }
+
 .input-group input {
   padding-top: 15px;
   text-align: center;
@@ -7054,7 +7047,7 @@ a {
   height: 10%;
   float: left;
   background: #254487;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   z-index: 2; }
 
@@ -7131,17 +7124,13 @@ a {
   font-size: 36px;
   margin-left: 50px; }
 
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px; }
-  .sidenav a {
-    font-size: 18px; } }
-
 .center {
   margin: auto;
   width: 50%; }
 
 /*PAGE CADASTROAPARELHO*/
 /*FINAL PAGE CADASTROAPARELHO*/
+/*PAGE CADASTROAPARELHOhome*/
+/*FINAL PAGE CADASTROAPARELHOhome*/
 
 /*# sourceMappingURL=style.css.map */
