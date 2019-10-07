@@ -7027,7 +7027,8 @@ body {
   background-repeat: no-repeat;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: center;
-  background: #f0f4f7; }
+  background: #f0f4f7;
+  padding-top: 60px; }
 
 a {
   color: #00B7FF; }
@@ -7052,12 +7053,12 @@ a {
 .footer {
   text-align: center;
   width: 100%;
-  height: 10%;
+  height: 60px;
   float: left;
   background: #254487;
-  position: absolute;
   bottom: 0px;
-  z-index: 2; }
+  z-index: 1;
+  position: relative; }
 
 .footer p {
   color: white; }
@@ -7065,7 +7066,11 @@ a {
 /*Page One-Login end*/
 .header_dashboard {
   background: linear-gradient(to right, #254487, #00a8cc);
-  height: 60px; }
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0; }
 
 .img_logo {
   width: 200px;
@@ -7089,7 +7094,8 @@ a {
   width: 60px;
   height: 100%;
   color: white;
-  position: fixed; }
+  position: fixed;
+  top: 60px; }
 
 .menu_fechado span:hover {
   color: #20609e; }
@@ -7107,7 +7113,7 @@ a {
   padding-top: 40px;
   padding-bottom: 60px; }
 
-.sidenav h4 {
+.sidenav h5 {
   color: white; }
 
 .sidenav a {
@@ -7138,6 +7144,9 @@ a {
   .sidenav a {
     font-size: 18px; } }
 
+.ld-body {
+  z-index: 1; }
+
 .center {
   margin: auto;
   width: 50%; }
@@ -7147,5 +7156,18 @@ a {
 /*Page movimentação aparelho*/
 .movap-nomes {
   margin: 0 0 0 0; }
+
+.movap-titulo {
+  margin-top: 40px; }
+
+.movap-titulo h4 {
+  color: #00aed0;
+  font-weight: bold; }
+
+.movap-boxcinza {
+  background: #d4d4d4; }
+
+.movap input {
+  background: #254085; }
 
 /*# sourceMappingURL=style.css.map */

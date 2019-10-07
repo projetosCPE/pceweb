@@ -37,4 +37,7 @@ router.get('/movimentacaoaparelho', (req, res) => {
   res.render('movimentacaoaparelho', { title: 'homeadmin', layout: 'layoutdashboard' });
 });
 
+router.get('/cadastroClientes', (req, res) => {
+  res.render('cadastroClientes', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+});
 module.exports = router;
