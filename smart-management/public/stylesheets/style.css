@@ -7021,19 +7021,11 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
-body {
-  background-image: url("../images/imagem-back.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  text-align: center;
-  background: #f0f4f7;
-  padding-top: 60px; }
-
-a {
-  color: #00B7FF; }
-
 /*Page Login inicial*/
+.img-login {
+  background-image: url("/images/imagem_back.jpg");
+  width: 100%; }
+
 .input-group input {
   padding-top: 15px;
   text-align: center;
@@ -7056,6 +7048,7 @@ a {
   height: 60px;
   float: left;
   background: #254487;
+  position: absolute;
   bottom: 0px;
   z-index: 1;
   position: relative; }
@@ -7144,18 +7137,12 @@ a {
   .sidenav a {
     font-size: 18px; } }
 
-.ld-body {
-  z-index: 1; }
-
 .center {
   margin: auto;
   width: 50%; }
 
 /*PAGE CADASTROAPARELHO*/
 /*FINAL PAGE CADASTROAPARELHO*/
-/*Page movimentação aparelho*/
-.movap-nomes {
-  margin: 0 0 0 0; }
 
 .movap-titulo {
   margin-top: 40px; }

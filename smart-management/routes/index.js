@@ -28,9 +28,19 @@ router.get('/dashboard', (req, res) => {
   res.render('LayoutDashboard', { title: 'homeadmin', layout: 'layout' });
 });
 
-/* GET dcadastrAparelho page. */
+/* GET cadastroAparelho page. */
 router.get('/cadastroAparelho', (req, res) => {
-  res.render('cadastroAparelho', { title: 'homeadmin', layout: 'layoutdashboard' });
+  res.render('cadastroAparelho', { title: 'Cadastro de Aparelhos', layout: 'layoutdashboard' });
+});
+
+/* GET dcadastrAparelhoHome page. */
+router.get('/cadastroAparelhoHome', (req, res) => {
+  res.render('cadastroAparelhoHome', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
+});
+
+/* GET moveAparelhos page. */
+router.get('/moveAparelhos', (req, res) => {
+  res.render('moveAparelhos', { title: 'Movimentação', layout: 'layoutdashboard' });
 });
 
 router.get('/movimentacaoaparelho', (req, res) => {
