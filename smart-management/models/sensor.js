@@ -4,7 +4,8 @@ const sensorSchema = new mongoose.Schema({
     dados: Number,
     
 });
-  
+ // dados:number 
+ //}, {tmerstamps: true, static: false}); 
 const SensorModel = mongoose.model('Sensor', sensorSchema);
   
 class Sensor {
