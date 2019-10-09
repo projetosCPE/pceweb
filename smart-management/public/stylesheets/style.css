@@ -7021,9 +7021,6 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  background-image: url("../images/imagem-back.png");
-  background-size: cover;
-  background-repeat: no-repeat;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: center;
   background: #f0f4f7;

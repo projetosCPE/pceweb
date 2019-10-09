@@ -42,11 +42,11 @@ router.get('/cadastroAparelhoHome', (req, res) => {
 router.get('/moveAparelhos', (req, res) => {
   res.render('moveAparelhos', { title: 'Movimentação', layout: 'layoutdashboard' });
 });
-
+/* GET movimentaaparelho page. */
 router.get('/movimentacaoaparelho', (req, res) => {
   res.render('movimentacaoaparelho', { title: 'homeadmin', layout: 'layoutdashboard' });
 });
-
+/* GET cadastroClientes page. */
 router.get('/cadastroClientes', (req, res) => {
   res.render('cadastroClientes', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
 });
