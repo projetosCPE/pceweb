@@ -1,5 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
+const Clientes = require('../models/clientes');
 var router = express.Router();
 
 /* GET home page. */
@@ -39,8 +40,8 @@ router.get('/cadastroAparelhoHome', (req, res) => {
 });
 
 /* GET moveAparelhos page. */
-router.get('/moveAparelhos', (req, res) => {
-  res.render('moveAparelhos', { title: 'Movimentação', layout: 'layoutdashboard' });
+router.get('/movimentaaparelhohome', (req, res) => {
+  res.render('movimentaaparelhohome', { title: 'Movimentação', layout: 'layoutdashboard' });
 });
 /* GET movimentaaparelho page. */
 router.get('/movimentacaoaparelho', (req, res) => {
@@ -49,5 +50,15 @@ router.get('/movimentacaoaparelho', (req, res) => {
 /* GET cadastroClientes page. */
 router.get('/cadastroClientes', (req, res) => {
   res.render('cadastroClientes', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+});
+/* GET cadastroClientes page. */
+router.post('/cadastroClientes', (req, res) => {
+  Clientes.create()
+
+  res.render('cadastroClientes', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+});
+/* GET cadastroClientes page. */
+router.get('/cadastroClientesHome', (req, res) => {
+  res.render('cadastroClientesHome', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
 });
 module.exports = router;
