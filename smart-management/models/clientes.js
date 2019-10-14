@@ -43,7 +43,7 @@ class Cliente {
    static getById(id) {
      return new Promise((resolve, reject) => {
        ClienteModel.findById(id).exec().then((result) => {
-         resolve(result);
+         console.log(result._id);
        }).catch((err) => {
          reject(err);
        });
@@ -58,7 +58,8 @@ class Cliente {
    static create(Cliente) {
      return new Promise((resolve, reject) => {
        ClienteModel.create(Cliente).then((result) => {
-         resolve(result._id);
+         resolve(result);
+         console.log(result);
        }).catch((err) => {
          reject(err);
        });

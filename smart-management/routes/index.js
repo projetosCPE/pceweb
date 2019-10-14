@@ -1,6 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
-const Clientes = require('../models/clientes');
+const clientess = require('../models/clientes');
 var router = express.Router();
 
 /* GET home page. */
@@ -49,13 +49,16 @@ router.get('/movimentacaoaparelho', (req, res) => {
 });
 /* GET cadastroClientes page. */
 router.get('/cadastroClientes', (req, res) => {
-  res.render('cadastroClientes', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+  res.render('cadastroClientes', { title: 'Cadastro de Clientes layout: 'layoutdashboard' });
 });
 /* GET cadastroClientes page. */
-router.post('/cadastroClientes', (req, res) => {
-  Clientes.create()
-
-  res.render('cadastroClientes', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+router.post('/cadastroClientes', function(req, res, next){
+  const ativa = req.body.Clientes;
+  clientes.create(ativa).then((reqid)=>{
+    res.render('cadastroClientes', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+    }).catch((error) =>{
+      console.log(error);
+  });
 });
 /* GET cadastroClientes page. */
 router.get('/cadastroClientesHome', (req, res) => {
