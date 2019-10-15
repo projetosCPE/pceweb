@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const aparelhosSchema = new mongoose.Schema({
+const deviceSchema = new mongoose.Schema({
     numLote: String,
     numId: String, // ou tipo Number?
     dateFab: String,
@@ -10,16 +10,16 @@ const aparelhosSchema = new mongoose.Schema({
     obs: String,// definir tamanho ?
 });
   
-const AparelhosModel = mongoose.model('Aparelhos', aparelhosSchema);
+const DeviceModel = mongoose.model('Device', deviceSchema);
   
-class Aparelhos {
+class Device {
     /**
-     * Get all Aparelhoss from database
-     * @returns {Array} Array of Aparelhoss
+     * Get all Devices from database
+     * @returns {Array} Array of Devices
      */
     static getAll() {
       return new Promise((resolve, reject) => {
-        AparelhosModel.find({}).exec().then((results) => {
+        DeviceModel.find({}).exec().then((results) => {
           resolve(results);
         }).catch((err) => {
           reject(err);
@@ -28,13 +28,13 @@ class Aparelhos {
     }
   
     /**
-     * Get a Aparelhos by it's id
-     * @param {string} id - Aparelhos Id
-     * @returns {Object} - Aparelhos Document Data
+     * Get a Device by it's id
+     * @param {string} id - Device Id
+     * @returns {Object} - Device Document Data
      */
     static getById(id) {
       return new Promise((resolve, reject) => {
-        AparelhosModel.findById(id).exec().then((result) => {
+        DeviceModel.findById(id).exec().then((result) => {
           resolve(result);
         }).catch((err) => {
           reject(err);
@@ -43,13 +43,14 @@ class Aparelhos {
     }
   
     /**
-     * Create a new Aparelhos
-     * @param {Object} aparelhos - Aparelhos Document Data
-     * @returns {string} - New Aparelhos Id
+     * Create a new Device
+     * @param {Object} device - Device Document Data
+     * @returns {string} - New Device Id
      */
-    static create(aparelhos) {
+    static create(device) {
       return new Promise((resolve, reject) => {
-        AparelhosModel.create(aparelhos).then((result) => {
+        DeviceModel.create(device).then((result) => {
+          console.log('----------------------------------3-------------------------------------------');
           resolve(result._id);
         }).catch((err) => {
           reject(err);
@@ -58,14 +59,14 @@ class Aparelhos {
     }
   
     /**
-     * Update a Aparelhos
-     * @param {string} id - Aparelhos Id
-     * @param {Object} Aparelhos - Aparelhos Document Data
+     * Update a Device
+     * @param {string} id - Device Id
+     * @param {Object} Device - Device Document Data
      * @returns {null}
      */
-    static update(id, aparelhos) {
+    static update(id, device) {
       return new Promise((resolve, reject) => {
-        AparelhosModel.findByIdAndUpdate(id, aparelhos).then(() => {
+        DeviceModel.findByIdAndUpdate(id, device).then(() => {
           resolve();
         }).catch((err) => {
           reject(err);
@@ -74,20 +75,20 @@ class Aparelhos {
     }
   
     /**
-    * Delete a Aparelhos
-    * @param {string} id - Aparelhos Id
+    * Delete a Device
+    * @param {string} id - Device Id
     * @returns {null}
     */
     static delete(id) {
      return new Promise((resolve, reject) => {
-       AparelhosModel.findByIdAndUpdate(id, { deleted: 1 }).then(() => {
+       DeviceModel.findByIdAndUpdate(id, { deleted: 1 }).then(() => {
          resolve();
        }).catch((err) => {
          reject(err);
        });
      });
     }
-}
+  }
   
-  module.exports = aparelhos;
+  module.exports = Device;
   
