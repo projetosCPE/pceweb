@@ -92,3 +92,12 @@ router.get('/registerWorkStation', (req, res) => {
   res.render('registerWorkStation', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboard' });
 });
 module.exports = router;
+<<<<<<< Updated upstream
+=======
+
+/* GET onlineTrackingHome page. */
+router.get('/onlineTrackingHome', (req, res) => {
+  res.render('onlineTrackingHome', { title: 'Acompanhamento Online', layout: 'layoutdashboard' });
+});
+module.exports = router;
+>>>>>>> Stashed changes
