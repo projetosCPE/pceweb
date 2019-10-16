@@ -1,6 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
-const Aparelhos = require('../models/aparelhos');
+const aparelhos = require('../models/aparelhos');
 const clientes = require('../models/clientes');
 var router = express.Router();
 
@@ -10,9 +10,9 @@ router.get('/', function(req, res, next) {
 });
 /* GET login. */
 router.get('/login', function(req, res, next) {
-  
+
     res.render('login', { title: 'Login' });
-    
+
 });
 
 /* POST Login */
@@ -37,9 +37,17 @@ router.get('/dashboardmanager', (req, res) => {
   res.render('LayoutDashboardManager', { title: 'homeadmin', layout: 'layout' });
 });
 
-/* GET cadastroAparelho page. */
 router.get('/cadastroAparelho', (req, res) => {
-  res.render('cadastroAparelho', { title: 'Cadastro de Aparelhos', layout: 'layoutdashboard' });
+  res.render('cadastroAparelho', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
+});
+/* GET cadastroAparelho page. */
+router.post('/cadastroAparelho', (req, res) => {
+  const ativa = req.body.aparelhos;
+  aparelhos.create(ativa).then((reqid)=>{
+    res.render('cadastroAparelho', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
+    }).catch((error) =>{
+      console.log(error);
+  });
 });
 
 /* GET dcadastrAparelhoHome page. */

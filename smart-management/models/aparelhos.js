@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const deviceSchema = new mongoose.Schema({
+const DeviceSchema = new mongoose.Schema({
     numLote: String,
     numId: String, // ou tipo Number?
     dateFab: String,
@@ -9,9 +9,9 @@ const deviceSchema = new mongoose.Schema({
     dataMovimenta: String,// ver se nao é melhor ipo inteiro
     obs: String,// definir tamanho ?
 });
-  
-const DeviceModel = mongoose.model('Device', deviceSchema);
-  
+
+const DeviceModel = mongoose.model('Device', DeviceSchema);
+
 class Device {
     /**
      * Get all Devices from database
@@ -26,7 +26,7 @@ class Device {
         });
       });
     }
-  
+
     /**
      * Get a Device by it's id
      * @param {string} id - Device Id
@@ -41,7 +41,7 @@ class Device {
         });
       });
     }
-  
+
     /**
      * Create a new Device
      * @param {Object} device - Device Document Data
@@ -51,13 +51,13 @@ class Device {
       return new Promise((resolve, reject) => {
         DeviceModel.create(device).then((result) => {
           console.log('----------------------------------3-------------------------------------------');
-          resolve(result._id);
+          resolve(result);
         }).catch((err) => {
           reject(err);
         });
       });
     }
-  
+
     /**
      * Update a Device
      * @param {string} id - Device Id
@@ -73,7 +73,7 @@ class Device {
         });
       });
     }
-  
+
     /**
     * Delete a Device
     * @param {string} id - Device Id
@@ -89,6 +89,5 @@ class Device {
      });
     }
   }
-  
+
   module.exports = Device;
-  
