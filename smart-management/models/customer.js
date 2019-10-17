@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const ClienteSchema = new mongoose.Schema({
-    codCliente: String,
+const CustomerSchema = new mongoose.Schema({
+    codCustomer: String,
     razaoSocial: String,
     nomeFantasia: String,
     cnpj: Number,
@@ -18,16 +18,16 @@ const ClienteSchema = new mongoose.Schema({
     status: String,
 }, {timestamps: true, static: false});
 
-const ClienteModel = mongoose.model('Cliente', ClienteSchema);
+const CustomerModel = mongoose.model('Customer', CustomerSchema);
 
-class Cliente {
+class Customer {
    /**
-    * Get all Clientes from database
-    * @returns {Array} Array of Clientes
+    * Get all Customers from database
+    * @returns {Array} Array of Customers
     */
    static getAll() {
      return new Promise((resolve, reject) => {
-       ClienteModel.find({}).exec().then((results) => {
+       CustomerModel.find({}).exec().then((results) => {
          resolve(results);
        }).catch((err) => {
          reject(err);
@@ -36,13 +36,13 @@ class Cliente {
    }
 
    /**
-    * Get a Cliente by it's id
-    * @param {string} id - Cliente Id
-    * @returns {Object} - Cliente Document Data
+    * Get a Customer by it's id
+    * @param {string} id - Customer Id
+    * @returns {Object} - Customer Document Data
     */
    static getById(id) {
      return new Promise((resolve, reject) => {
-       ClienteModel.findById(id).exec().then((result) => {
+       CustomerModel.findById(id).exec().then((result) => {
          console.log(result._id);
        }).catch((err) => {
          reject(err);
@@ -51,13 +51,13 @@ class Cliente {
    }
 
    /**
-    * Create a new Cliente
-    * @param {Object} Cliente - Cliente Document Data
-    * @returns {string} - New Cliente Id
+    * Create a new Customer
+    * @param {Object} Customer - Customer Document Data
+    * @returns {string} - New Customer Id
     */
-   static create(Cliente) {
+   static create(customer) {
      return new Promise((resolve, reject) => {
-       ClienteModel.create(Cliente).then((result) => {
+       CustomerModel.create(customer).then((result) => {
          resolve(result);
          console.log(result);
        }).catch((err) => {
@@ -67,14 +67,14 @@ class Cliente {
    }
 
    /**
-    * Update a Cliente
-    * @param {string} id - Cliente Id
-    * @param {Object} Cliente - Cliente Document Data
+    * Update a Customer
+    * @param {string} id - Customer Id
+    * @param {Object} Customer - Customer Document Data
     * @returns {null}
     */
-   static update(id, Cliente) {
+   static update(id, customer) {
      return new Promise((resolve, reject) => {
-       ClienteModel.findByIdAndUpdate(id, Cliente).then(() => {
+       CustomerModel.findByIdAndUpdate(id, customer).then(() => {
          resolve();
        }).catch((err) => {
          reject(err);
@@ -83,13 +83,13 @@ class Cliente {
    }
 
    /**
-   * Delete a Cliente
-   * @param {string} id - Cliente Id
+   * Delete a Customer
+   * @param {string} id - Customer Id
    * @returns {null}
    */
    static delete(id) {
     return new Promise((resolve, reject) => {
-      ClienteModel.findByIdAndUpdate(id, { deleted: 1 }).then(() => {
+      CustomerModel.findByIdAndUpdate(id, { deleted: 1 }).then(() => {
         resolve();
       }).catch((err) => {
         reject(err);
@@ -98,4 +98,4 @@ class Cliente {
    }
 }
 
- module.exports = Cliente;
+ module.exports = Customer;

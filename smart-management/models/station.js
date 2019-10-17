@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
 
 const StationSchema = new mongoose.Schema({
-    codeStation: String,
-    numberap: Number,
-    namecol: String,
-    temptol: Number,
+    code_Station: String,
+    number_ap: Number,
+    name_col: String,
+    temp_tol: Number,
+    status: String,
+    work_schedule: String,
+    entry_time: String,
+    departure_time: String,
+    weekday: String,
+
 }, {timestamps: true, static: false});
 
 const StationModel = mongoose.model('Station', StationSchema);

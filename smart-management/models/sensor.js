@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const sensorSchema = new mongoose.Schema({
     dados: Number,
     
-});
+},{timestamps: true, static: false});
  // dados:number 
  //}, {tmerstamps: true, static: false}); 
 const SensorModel = mongoose.model('Sensor', sensorSchema);

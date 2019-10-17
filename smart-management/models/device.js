@@ -8,7 +8,7 @@ const DeviceSchema = new mongoose.Schema({
     status: String,
     dataMovimenta: String,// ver se nao é melhor ipo inteiro
     obs: String,// definir tamanho ?
-});
+}, {timestamps: true, static: false});
 
 const DeviceModel = mongoose.model('Device', DeviceSchema);
 
