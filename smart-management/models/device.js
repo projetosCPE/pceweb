@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const DeviceSchema = new mongoose.Schema({
-    numLote: String,
+    numLot: String,
     numId: String, // ou tipo Number?
     dateFab: String,
-    fornecedor: String,
+    provider: String,
     status: String,
-    dataMovimenta: String,// ver se nao é melhor ipo inteiro
+    dateMov: String,// ver se nao é melhor ipo inteiro
     obs: String,// definir tamanho ?
 }, {timestamps: true, static: false});
 
