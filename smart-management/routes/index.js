@@ -1,7 +1,7 @@
 const express = require('express');
 const firebase = require('firebase');
 const device = require('../models/device');
-const client = require('../models/client');
+const customer = require('../models/customer');
 var router = express.Router();
 
 /* GET home page. */
@@ -63,22 +63,22 @@ router.get('/moveDeviceHome', (req, res) => {
 router.get('/moveDevice', (req, res) => {
   res.render('moveDevice', { title: 'Movimentação', layout: 'layoutdashboard' });
 });
-/* GET ClientBases page. */
-router.get('/ClientBases', (req, res) => {
-  res.render('ClientBases', { title: 'Cadastro de Clientes' ,layout: 'layoutdashboard' });
+/* GET CustomerBases page. */
+router.get('/CustomerBases', (req, res) => {
+  res.render('CustomerBases', { title: 'Cadastro de Clientes' ,layout: 'layoutdashboard' });
 });
-/* POST ClientBases page. */
-router.post('/ClientBases', function(req, res, next){
-  const ativa = req.body.Clients;
-  Clients.create(ativa).then((reqid)=>{
-    res.render('ClientBases', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+/* POST CustomerBases page. */
+router.post('/CustomerBases', function(req, res, next){
+  const ativa = req.body.Clientes;
+  clientes.create(ativa).then((reqid)=>{
+    res.render('CustomerBases', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
     }).catch((error) =>{
       console.log(error);
   });
 });
-/* GET ClientBasesHome page. */
-router.get('/ClientBasesHome', (req, res) => {
-  res.render('ClientBasesHome', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+/* GET CustomerBasesHome page. */
+router.get('/CustomerBasesHome', (req, res) => {
+  res.render('CustomerBasesHome', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
 });
 
 /* GET registerWorkStationHome page. */
@@ -102,5 +102,9 @@ router.get('/onlineTrackingHome', (req, res) => {
 router.get('/onlineTracking', (req, res) => {
   res.render('onlineTracking', { title: 'Acompanhamento Online', layout: 'layoutdashboard' });
 });
+
+
+
+
 
 module.exports = router;

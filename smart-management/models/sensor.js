@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const sensorSchema = new mongoose.Schema({
-    data: Number,
-
+    dados: Number,
+    
 },{timestamps: true, static: false});
- // data:number 
- //}, {tmerstamps: true, static: false});
+ // dados:number 
+ //}, {tmerstamps: true, static: false}); 
 const SensorModel = mongoose.model('Sensor', sensorSchema);
-
+  
 class Sensor {
     /**
      * Get all Sensors from database
@@ -22,7 +22,7 @@ class Sensor {
         });
       });
     }
-
+  
     /**
      * Get a Sensor by it's id
      * @param {string} id - Sensor Id
@@ -37,7 +37,7 @@ class Sensor {
         });
       });
     }
-
+  
     /**
      * Create a new Sensor
      * @param {Object} sensor - Sensor Document Data
@@ -52,7 +52,7 @@ class Sensor {
         });
       });
     }
-
+  
     /**
      * Update a Sensor
      * @param {string} id - Sensor Id
@@ -68,7 +68,7 @@ class Sensor {
         });
       });
     }
-
+  
     /**
     * Delete a Sensor
     * @param {string} id - Sensor Id
@@ -84,5 +84,6 @@ class Sensor {
      });
     }
 }
-
+  
   module.exports = sensor;
+  
