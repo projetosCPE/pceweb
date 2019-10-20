@@ -2,6 +2,7 @@ const express = require('express');
 const firebase = require('firebase');
 const aparelhos = require('../models/aparelhos');
 const clientes = require('../models/clientes');
+const station = require('../models/station');
 var router = express.Router();
 
 /* GET home page. */
@@ -85,10 +86,20 @@ router.get('/cadastroClientesHome', (req, res) => {
 router.get('/registerWorkStationHome', (req, res) => {
   res.render('registerWorkStationHome', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboard' });
 });
-module.exports = router;
 
-/* GET registerWorkStationHome page. */
+/* GET registerWorkStation page. */
 router.get('/registerWorkStation', (req, res) => {
   res.render('registerWorkStation', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboard' });
+});
+
+/* POST registerWorkStation page. */
+router.post('/registerWorkStation', function(req, res, next){
+  const ativa = req.body.Stations;
+  console.log(ativa);
+  station.create(ativa).then((reqid)=>{
+    res.render('registerWorkStation', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+    }).catch((error) =>{
+      console.log(error);
+  });
 });
 module.exports = router;

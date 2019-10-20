@@ -2,9 +2,14 @@ const mongoose = require('mongoose');
 
 const StationSchema = new mongoose.Schema({
     codeStation: String,
-    numberap: Number,
-    namecol: String,
-    temptol: Number,
+    numberAp: Number,
+    nameEmployed: String,
+    toleranceTime: Number,
+    status: String,
+    officeHours: String,
+    inputHour: String,
+    outputHour: String,
+    days: String,
 }, {timestamps: true, static: false});
 
 const StationModel = mongoose.model('Station', StationSchema);
