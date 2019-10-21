@@ -1,7 +1,7 @@
 const express = require('express');
 const firebase = require('firebase');
-const aparelhos = require('../models/aparelhos');
-const clients = require('../models/clientes');
+const devices = require('../models/devices');
+const clients = require('../models/clients');
 const station = require('../models/station');
 var router = express.Router();
 
@@ -43,8 +43,8 @@ router.get('/cadastroAparelho', (req, res) => {
 });
 /* GET cadastroAparelho page. */
 router.post('/cadastroAparelho', (req, res) => {
-  const ativa = req.body.aparelhos;
-  aparelhos.create(ativa).then((reqid)=>{
+  const ativa = req.body.Devices;
+  devices.create(ativa).then((reqid)=>{
     res.render('cadastroAparelho', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
     }).catch((error) =>{
       console.log(error);
