@@ -9,24 +9,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express', layout:"layout.hbs" });
 });
-/* GET login. */
-router.get('/login', function(req, res, next) {
 
-    res.render('login', { title: 'Login' });
-
-});
-
-/* POST Login */
-router.post('/login', function(req, res, next) {
-  const user = req.body.user;
-  console.log(user);
-  firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((logado) => {
-    console.log(logado);
-    res.redirect('/dashboard');
-  }).catch((error) => {
-    console.log(error);
-  });
-});
 
 /* GET dashboard page. */
 router.get('/dashboard', (req, res) => {
@@ -38,68 +21,7 @@ router.get('/dashboardmanager', (req, res) => {
   res.render('LayoutDashboardManager', { title: 'homeadmin', layout: 'layout' });
 });
 
-router.get('/cadastroAparelho', (req, res) => {
-  res.render('cadastroAparelho', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
-});
-/* GET cadastroAparelho page. */
-router.post('/cadastroAparelho', (req, res) => {
-  const ativa = req.body.Devices;
-  devices.create(ativa).then((reqid)=>{
-    res.render('cadastroAparelho', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
-    }).catch((error) =>{
-      console.log(error);
-  });
-});
 
-/* GET dcadastrAparelhoHome page. */
-router.get('/cadastroAparelhoHome', (req, res) => {
-  res.render('cadastroAparelhoHome', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
-});
 
-/* GET moveAparelhos page. */
-router.get('/movimentaaparelhohome', (req, res) => {
-  res.render('movimentaaparelhohome', { title: 'Movimentação', layout: 'layoutdashboard' });
-});
-/* GET movimentaaparelho page. */
-router.get('/movimentacaoaparelho', (req, res) => {
-  res.render('movimentacaoaparelho', { title: 'homeadmin', layout: 'layoutdashboard' });
-});
-/* GET cadastroClientes page. */
-router.get('/cadastroClientes', (req, res) => {
-  res.render('cadastroClientes', { title: 'Cadastro de Clientes' ,layout: 'layoutdashboard' });
-});
-/* GET cadastroClientes page. */
-router.post('/cadastroClientes', function(req, res, next){
-  const ativa = req.body.Clients;
-  clients.create(ativa).then((reqid)=>{
-    res.render('cadastroClientes', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
-    }).catch((error) =>{
-      console.log(error);
-  });
-});
-/* GET cadastroClientes page. */
-router.get('/cadastroClientesHome', (req, res) => {
-  res.render('cadastroClientesHome', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
-});
 
-/* GET registerWorkStationHome page. */
-router.get('/registerWorkStationHome', (req, res) => {
-  res.render('registerWorkStationHome', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboard' });
-});
-
-/* GET registerWorkStation page. */
-router.get('/registerWorkStation', (req, res) => {
-  res.render('registerWorkStation', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboard' });
-});
-
-/* POST registerWorkStation page. */
-router.post('/registerWorkStation', function(req, res, next){
-  const ativa = req.body.Stations;
-  console.log(ativa);
-  station.create(ativa).then((reqid)=>{
-    res.render('registerWorkStation', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
-    }).catch((error) =>{
-      console.log(error);
-  });
-});
 module.exports = router;

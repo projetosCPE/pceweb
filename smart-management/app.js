@@ -9,8 +9,17 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
+const loginRouter = require('./routes/login');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const clientsRegistrationRouter = require('./routes/clientsRegistration');
+const clientsRegistrationHomeRouter = require('./routes/clientsRegistrationHome');
+const deviceMoveRouter = require('./routes/deviceMove');
+const deviceMoveHomeRouter = require('./routes/deviceMoveHome');
+const deviceRegistrationRouter = require('./routes/deviceRegistration');
+const deviceRegistrationHomeRouter = require('./routes/deviceRegistrationHome');
+const registerWorkStationRouter = require('./routes/registerWorkStation');
+const registerWorkStationHomeRouter = require('./routes/registerWorkStationHome');
 var mongoose = require('mongoose');
 const app = express();
 
@@ -53,7 +62,16 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/login', loginRouter);
 app.use('/users', usersRouter);
+app.use('/clientsRegistration', clientsRegistrationRouter);
+app.use('/clientsRegistrationHome', clientsRegistrationHomeRouter);
+app.use('/deviceMove', deviceMoveRouter);
+app.use('/deviceMoveHome', deviceMoveHomeRouter);
+app.use('/deviceRegistration', deviceRegistrationRouter);
+app.use('/deviceRegistrationHome', deviceRegistrationHomeRouter);
+app.use('/registerWorkStation', registerWorkStationRouter);
+app.use('/registerWorkStationHome', registerWorkStationHomeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
