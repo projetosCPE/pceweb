@@ -5,26 +5,26 @@
 <div class="col">
     <div class="row">
         <div class="col-8">
-            <form>
+            <form action="/registerWorkStation" method="post">
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Código da estação</p>
-                <input type="text" class="form-control" id="intentificação" placeholder="">
+                <input type="text" class="form-control" id="intentificação" placeholder="" name="Stations[codeStation]">
             </div>
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Núnero do Aparelho</p>
-                <input type="number" class="form-control" id="intentificação" placeholder="">
+                <input type="number" class="form-control" id="intentificação" placeholder="" name="Stations[numberAp]">
             </div>
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Nome do Colaborador</p>
-                <input type="text" class="form-control" id="intentificação" placeholder="">
+                <input type="text" class="form-control" id="intentificação" placeholder="" name="Stations[nameEmployed]">
             </div>
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Tempo de tolerância para uso do aparelho</p>
-                <input type="number" class="form-control" id="intentificação" placeholder="">
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="Stations[toleranceTime]">
             </div>
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Status</p>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" id="exampleFormControlSelect1" name="Stations[status]">
                 <option>Trabalho</option>
                 <option>Férias</option>
                 <option>Atestado</option>
@@ -33,15 +33,15 @@
             </div>
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Horário de entrada</p>
-                <input type="text" class="form-control" id="intentificação" placeholder="">
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="Stations[inputHour]">
             </div>
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Horário de saída</p>
-                <input type="email" class="form-control" id="intentificação" placeholder="">
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="Stations[outputHour]">
             </div>
             <div class="form-group col-8">
-                <p class="movap-nomes" align="left">Status</p>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <p class="movap-nomes" align="left">Dias da Semana</p>
+                <select class="form-control" id="exampleFormControlSelect1" name="Stations[days]">
                 <option>Segunda</option>
                 <option>Terça</option>
                 <option>Quarta</option>
