@@ -9,7 +9,36 @@ const StationSchema = new mongoose.Schema({
     officeHours: String,
     inputHour: String,
     outputHour: String,
-    days: String,
+    weekday: {
+      monday: {
+        type: Boolean,
+        default: 0
+      },
+      tuesday: {
+        type: Boolean,
+        default: 0
+      },
+      wednesday: {
+        type: Boolean,
+        default: 0
+      },
+      thursday: {
+        type: Boolean,
+        default: 0
+      },
+      friday: {
+        type: Boolean,
+        default: 0
+      },
+      saturday: {
+        type: Boolean,
+        default: 0
+      },
+      sunday: {
+        type: Boolean,
+        default: 0
+      }
+    }
 }, {timestamps: true, static: false});
 
 const StationModel = mongoose.model('Station', StationSchema);

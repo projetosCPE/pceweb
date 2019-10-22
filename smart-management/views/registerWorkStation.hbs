@@ -25,10 +25,10 @@
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Status</p>
                 <select class="form-control" id="exampleFormControlSelect1" name="Stations[status]">
-                <option>Trabalho</option>
-                <option>Férias</option>
-                <option>Atestado</option>
-                <option>Falta</option>
+                  <option>Trabalho</option>
+                  <option>Férias</option>
+                  <option>Atestado</option>
+                  <option>Falta</option>
                 </select>
             </div>
             <div class="form-group col-8">
@@ -41,15 +41,15 @@
             </div>
             <div class="form-group col-8">
                 <p class="movap-nomes" align="left">Dias da Semana</p>
-                <select class="form-control" id="exampleFormControlSelect1" name="Stations[days]">
-                <option>Segunda</option>
-                <option>Terça</option>
-                <option>Quarta</option>
-                <option>Quinta</option>
-                <option>Sexta</option>
-                <option>Sábado</option>
-                <option>Domingo</option>
-                </select>
+
+                <input type="checkbox" name='Stations[weekday][monday]' value="1">Segunda</input>
+                <input type="checkbox" name='Stations[weekday][tuesday]' value="1">Terça</input>
+                <input type="checkbox" name='Stations[weekday][wednesday]' value="1">Quarta</input>
+                <input type="checkbox" name='Stations[weekday][thursday]' value="1">Quinta</input>
+                <input type="checkbox" name='Stations[weekday][frinday]' value="1">Sexta</input>
+                <input type="checkbox" name='Stations[weekday][saturday]' value="1">Sábado</input>
+                <input type="checkbox" name='Stations[weekday][sunday]' value="1">Domingo</input>
+
             </div>
 
             <div class="form-group justify-content-start col-md-8 d-flex movap">
