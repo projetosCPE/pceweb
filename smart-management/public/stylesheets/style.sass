@@ -41,7 +41,7 @@ a
   z-index: 1
   // border-top: 1px solid #333
   // left: 0
-  position: relative
+  position: absolute
   //arrumar melhor a position footer em relaçao a boxe
 .footer p
   color: white
@@ -134,6 +134,11 @@ a
   margin: auto
   width: 50%
 
+#main 
+  transition: margin-left .5s 
+  padding: 20px
+
+
 /*PAGE CADASTROAPARELHO*/
 
 
@@ -159,6 +164,46 @@ a
 
 
 /*dashboardmanager */
+body 
+  overflow-x: hidden
+
+
+  
+#sidebar-wrapper 
+  min-height: 100vh
+  -webkit-transition: margin .25s ease-out
+  -moz-transition: margin .25s ease-out
+  -o-transition: margin .25s ease-out
+  transition: margin .25s ease-out
+  min-width: 10vw
+
+#sidebar-wrapper hr
+  width: 75%
+  border-top: 1px solid #00829c
+
+#page-content-wrapper 
+  min-width: 50vw
+
+
+#wrapper.toggled #sidebar-wrapper 
+  margin-left: 0
+
+.lateral
+  background-color: #00acce
+
+@media (min-width: 768px) 
+  #sidebar-wrapper 
+    margin-left: 0
+  
+
+  #page-content-wrapper 
+    min-width: 0
+    width: 100%
+  
+
+  #wrapper.toggled #sidebar-wrapper 
+    margin-left: -15rem
+  
 
 
 

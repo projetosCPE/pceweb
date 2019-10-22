@@ -7058,7 +7058,7 @@ a {
   background: #254487;
   bottom: 0px;
   z-index: 1;
-  position: relative; }
+  position: absolute; }
 
 .footer p {
   color: white; }
@@ -7151,6 +7151,10 @@ a {
   margin: auto;
   width: 50%; }
 
+#main {
+  transition: margin-left .5s;
+  padding: 20px; }
+
 /*PAGE CADASTROAPARELHO*/
 /*FINAL PAGE CADASTROAPARELHO*/
 .movap-nomes {
@@ -7173,34 +7177,38 @@ a {
   background: #254085; }
 
 /*dashboardmanager */
-.wrapper {
-  display: flex;
-  width: 100%;
-  align-items: stretch; }
+body {
+  overflow-x: hidden; }
 
-#sidebar {
-  min-width: 250px;
-  max-width: 250px;
-    max-width-min-height: 100vh; }
+#sidebar-wrapper {
+  min-height: 100vh;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  min-width: 10vw; }
 
-#sidebar.active {
-  margin-left: -250px; }
+#sidebar-wrapper hr {
+  width: 75%;
+  border-top: 1px solid #00829c; }
 
-a[data-toggle="collapse"] {
-  position: relative; }
+#page-content-wrapper {
+  min-width: 50vw; }
 
-.dropdown-toggle::after {
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%); }
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0; }
 
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -250px; }
-  #sidebar.active {
-    margin-left: 0; } }
+.lateral {
+  background-color: #00acce; }
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0; }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%; }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem; } }
 
 /*dashboardmanager end*/
 
