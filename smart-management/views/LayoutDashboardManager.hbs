@@ -1,120 +1,69 @@
 <!DOCTYPE html>
 <html>
- <head>
-   <title>{{title}}</title>
-   <link rel='stylesheet' href='/stylesheets/style.css' />
-   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-   <meta name="viewport" content ="width=device-width, initial-scale=1, shrink-to-fit=no">
- </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
- <body>
-   <script src="/javascripts/jquery.js" charset="utf-8"></script>
-   <script src="/bootstrap/js/bootstrap.bundle.min.js" charset="utf-8"></script>
-   <nav class="navbar navbar-default no-margin">
-     <div class="navbar-header fixed-brand">
-       <button class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
-         <span class="fa fa-4x fa-bars" aria-hidden="true"></span>
-       </button>
-     </div>
-     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-       <ul class="nav navbar-nav">
-         <li class="active">
-           <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2">
-             <span class="fa fa-4x fa-bars" aria-hidden="true"></span>
-           </button>
-         </li>
-       </ul>
-     </div>
-     <div id="dashboard-user" class="navbar-brand" href="#"><a><i class="fa fa-user fa-4"></i> {{user.fullname}}</a></div>
-     <a type="button" id="dashboard-logout" class="btn btn-primary btn-sm" href="/logout">Logout</a>
-   </nav>
-   <div id="wrapper">
-     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
-             <li class="active">
-               <a href="/requisition"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Nova Requisição de Análise</a>
-             </li>
-        </ul>
-     </div>
-     <div id="page-content-wrapper">
-        <div class="container-fluid xyz">
-          {{{body}}}
-        </div>
-     </div>
-   <script src="/bootstrap/js/bootstrap.bundle.min.js" charset="utf-8"></script>
+</head>
+<header class="header_dashboard">
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <img class="img_logo"src="/images/Logo_Modera_2.png" align="left">
+  <img class="img_usuario"src="/images/usuario_logo.png" align="right">
+</header>
 
-  <div class="wrapper">
-      <!-- Sidebar -->
-    <div id="content">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
+<body>
 
-              <button type="button" id="sidebarCollapse" class="btn btn-info">
-                  <i class="fas fa-align-left"></i>
-                  <span>Toggle Sidebar</span>
-              </button>
+  <div class="d-flex" id="wrapper">
 
-          </div>
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="openbtn" id="menu-toggle">&#9776; Toggle Sidebar</button>
       </nav>
+      <div class="list-group" >
+        <h5>ADMINISTRADOR</h5>
+      <hr>
+      <a style="text-decoration:none" href="/deviceRegistrationHome">Cadastro dos Aparelhos</a>
+      <a style="text-decoration:none" href="/moveDeviceHome">Movimentação dos Aparelhos</a>
+      <a style="text-decoration:none" href="/cadastroClientes">Cadastro dos Clientes</a>
+      <a style="text-decoration:none" href="/login">Clientes x Aparelhos</a>
+      </div>
     </div>
-    <script src="/javascripts/layoutDashboard.js"></script>
- </body>
-</html>
+    <!-- /#sidebar-wrapper -->
 
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
 
+      
 
-
-      <nav id="sidebar">
-          <div class="sidebar-header">
-              <h3>Bootstrap Sidebar</h3>
-          </div>
-
-          <ul class="list-unstyled components">
-              <p>Dummy Heading</p>
-              <li class="active">
-                  <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                  <ul class="collapse list-unstyled" id="homeSubmenu">
-                      <li>
-                          <a href="#">Home 1</a>
-                      </li>
-                      <li>
-                          <a href="#">Home 2</a>
-                      </li>
-                      <li>
-                          <a href="#">Home 3</a>
-                      </li>
-                  </ul>
-              </li>
-              <li>
-                  <a href="#">About</a>
-              </li>
-              <li>
-                  <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                  <ul class="collapse list-unstyled" id="pageSubmenu">
-                      <li>
-                          <a href="#">Page 1</a>
-                      </li>
-                      <li>
-                          <a href="#">Page 2</a>
-                      </li>
-                      <li>
-                          <a href="#">Page 3</a>
-                      </li>
-                  </ul>
-              </li>
-              <li>
-                  <a href="#">Portfolio</a>
-              </li>
-              <li>
-                  <a href="#">Contact</a>
-              </li>
-          </ul>
-      </nav>
+      <div class="container container-fluid">
+        {{{body}}}
+        <p>OIIII></p>
+        <h5></h5>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
   </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+  <script src="javascripts/dashboardManager.js"></script>
+  <script src="/javascripts/jquery.js" charset="utf-8"></script>
+  <script src="/bootstrap/js/bootstrap.bundle.min.js" charset="utf-8"></script>
+  
+
 </body>
+  <footer class="dashboard_page">
+    <div class="footer" align="center">
+      <br>
+      <p>&copy 2019 Modera. Todos os direitos reservados </p>
+    </div>
+  </footer>
 
-
-
-
-
+</html>

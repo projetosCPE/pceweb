@@ -37,7 +37,7 @@ class Station {
    static getById(id) {
      return new Promise((resolve, reject) => {
        StationModel.findById(id).exec().then((result) => {
-         console.log(result._id);
+         console.log(result);
        }).catch((err) => {
          reject(err);
        });
@@ -52,7 +52,7 @@ class Station {
    static create(Station) {
      return new Promise((resolve, reject) => {
        StationModel.create(Station).then((result) => {
-         resolve(result);
+         resolve(result._id);
          console.log(result);
        }).catch((err) => {
          reject(err);
