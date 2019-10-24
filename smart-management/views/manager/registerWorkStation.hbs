@@ -1,0 +1,61 @@
+<div class="movap-titulo">
+  <h4 align="left">CADASTRO DE ESTAÇÕES DE APARELHOS</h4>
+  <hr>
+</div>
+<div class="col">
+    <div class="row">
+        <div class="col-8">
+            <form action="/registerWorkStation" method="post">
+            <div class="form-group col-8">
+                <p class="movap-nomes" align="left">Código da estação</p>
+                <input type="text" class="form-control" id="intentificação" placeholder="" name="Stations[codeStation]">
+            </div>
+            <div class="form-group col-8">
+                <p class="movap-nomes" align="left">Núnero do Aparelho</p>
+                <input type="number" class="form-control" id="intentificação" placeholder="" name="Stations[numberAp]">
+            </div>
+            <div class="form-group col-8">
+                <p class="movap-nomes" align="left">Nome do Colaborador</p>
+                <input type="text" class="form-control" id="intentificação" placeholder="" name="Stations[nameEmployed]">
+            </div>
+            <div class="form-group col-8">
+                <p class="movap-nomes" align="left">Tempo de tolerância para uso do aparelho</p>
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="Stations[toleranceTime]">
+            </div>
+            <div class="form-group col-8">
+                <p class="movap-nomes" align="left">Status</p>
+                <select class="form-control" id="exampleFormControlSelect1" name="Stations[status]">
+                  <option>Trabalho</option>
+                  <option>Férias</option>
+                  <option>Atestado</option>
+                  <option>Falta</option>
+                </select>
+            </div>
+            <div class="form-group col-8">
+                <p class="movap-nomes" align="left">Horário de entrada</p>
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="Stations[inputHour]">
+            </div>
+            <div class="form-group col-8">
+                <p class="movap-nomes" align="left">Horário de saída</p>
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="Stations[outputHour]">
+            </div>
+            <div class="form-group col-8">
+                <p class="movap-nomes" align="left">Dias da Semana</p>
+
+                <input type="checkbox" name='Stations[weekday][monday]' value="1">Segunda</input>
+                <input type="checkbox" name='Stations[weekday][tuesday]' value="1">Terça</input>
+                <input type="checkbox" name='Stations[weekday][wednesday]' value="1">Quarta</input>
+                <input type="checkbox" name='Stations[weekday][thursday]' value="1">Quinta</input>
+                <input type="checkbox" name='Stations[weekday][frinday]' value="1">Sexta</input>
+                <input type="checkbox" name='Stations[weekday][saturday]' value="1">Sábado</input>
+                <input type="checkbox" name='Stations[weekday][sunday]' value="1">Domingo</input>
+
+            </div>
+
+            <div class="form-group justify-content-start col-md-8 d-flex movap">
+                <input type="submit" value="CONFIRMAR" class="btn btn-primary" >
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -7,13 +7,13 @@ const router = express.Router();
 
 /* GET cadastroClientes page. */
 router.get('/', function(req, res, next){
-  res.render('clientsRegistration', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
+  res.render('admin/clientsRegistration', { title: 'CadastroAparelho', layout: 'layoutdashboard' });
 });
 /* POST cadastroClientes page. */
 router.post('/', function(req, res, next){
   const ativa = req.body.Clients;
   clients.create(ativa).then((reqid)=>{
-    res.render('clientsRegistration', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+    res.render('admin/clientsRegistration', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
     }).catch((error) =>{
       console.log(error);
   });
