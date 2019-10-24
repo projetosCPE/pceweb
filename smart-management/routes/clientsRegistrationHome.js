@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   Clients.getAll().then((clients)=>{
     console.log(clients);
-    res.render('clientsRegistrationHome', { title: 'Cadastro de Clientes', layout: 'layoutdashboard', clients });
+    res.render('admin/clientsRegistrationHome', { title: 'Cadastro de Clientes', layout: 'layoutdashboard', clients });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);

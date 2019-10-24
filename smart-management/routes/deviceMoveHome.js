@@ -7,7 +7,7 @@ const router = express.Router();
 
 /* GET moveAparelhos page. */
 router.get('/', (req, res) => {
-  res.render('deviceMoveHome', { title: 'Movimentação de Aparelhos Home', layout: 'layoutdashboard' });
+  res.render('admin/deviceMoveHome', { title: 'Movimentação de Aparelhos Home', layout: 'layoutdashboard' });
 });
 
 module.exports = router;

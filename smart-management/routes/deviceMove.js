@@ -8,7 +8,7 @@ const router = express.Router();
 
 /* GET movimentaaparelho page. */
 router.get('/', (req, res) => {
-  res.render('deviceMove', { title: 'Movimentação de Aparelhos', layout: 'layoutdashboard' });
+  res.render('admin/deviceMove', { title: 'Movimentação de Aparelhos', layout: 'layoutdashboard' });
 });
 
 module.exports = router;

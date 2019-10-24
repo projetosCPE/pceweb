@@ -8,7 +8,7 @@ const router = express.Router();
 
 /* GET registerWorkStation page. */
 router.get('/', (req, res) => {
-  res.render('registerWorkStation', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboard' });
+  res.render('manager/registerWorkStation', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboard' });
 });
 
 /* POST registerWorkStation page. */
@@ -16,7 +16,7 @@ router.post('/', function(req, res, next){
   const ativa = req.body.Stations;
   console.log(ativa);
   station.create(ativa).then((reqid)=>{
-    res.render('registerWorkStation', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
+    res.render('manager/registerWorkStation', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
     }).catch((error) =>{
       console.log(error);
   });
