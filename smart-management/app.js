@@ -20,6 +20,7 @@ const deviceRegistrationRouter = require('./routes/deviceRegistration');
 const deviceRegistrationHomeRouter = require('./routes/deviceRegistrationHome');
 const registerWorkStationRouter = require('./routes/registerWorkStation');
 const registerWorkStationHomeRouter = require('./routes/registerWorkStationHome');
+const clientsXdeviceRouter = require('./routes/clientsXdevice');
 var mongoose = require('mongoose');
 const app = express();
 
@@ -72,6 +73,7 @@ app.use('/deviceRegistration', deviceRegistrationRouter);
 app.use('/deviceRegistrationHome', deviceRegistrationHomeRouter);
 app.use('/registerWorkStation', registerWorkStationRouter);
 app.use('/registerWorkStationHome', registerWorkStationHomeRouter);
+app.use('/clientsXdevice', clientsXdeviceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
