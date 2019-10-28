@@ -42,7 +42,7 @@ a
   background: #254487
   bottom: 0px
   z-index: 1
-  position: relative
+  position: absolute
   margin-bottom: 0
 
 .footer p
@@ -84,6 +84,7 @@ a
   color: white
   position: fixed
   top: 60px
+  z-index: 1
 
 .menu_fechado span:hover
   color: #20609e
@@ -93,7 +94,7 @@ a
   height: 100%
   width: 0
   position: fixed
-  z-index: 3
+  z-index: 1
   top: 60px
   left: 0
   background-color: #00acce
@@ -209,5 +210,9 @@ body
 /*dashboardmanager end*/
 
 .div-home
-  height: 370px
+  height: 300px
+  overflow: auto
+
+.box-clientsRegistration
+  height: 500px
   overflow: auto
