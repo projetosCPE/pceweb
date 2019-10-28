@@ -42,9 +42,9 @@ a
   background: #254487
   bottom: 0px
   z-index: 1
-  position: absolute
+  position: relative
   margin-bottom: 0
-  
+
 .footer p
   color: white
 
@@ -87,12 +87,13 @@ a
 
 .menu_fechado span:hover
   color: #20609e
+  z-index: 3
 
 .sidenav
   height: 100%
   width: 0
   position: fixed
-  z-index: 1
+  z-index: 3
   top: 60px
   left: 0
   background-color: #00acce
@@ -136,8 +137,8 @@ a
   margin: auto
   width: 50%
 
-#main 
-  transition: margin-left .5s 
+#main
+  transition: margin-left .5s
   padding: 20px
 
 
@@ -166,12 +167,12 @@ a
 
 
 /*dashboardmanager */
-body 
+body
   overflow-x: hidden
 
 
-  
-#sidebar-wrapper 
+
+#sidebar-wrapper
   min-height: 100vh
   -webkit-transition: margin .25s ease-out
   -moz-transition: margin .25s ease-out
@@ -183,31 +184,30 @@ body
   width: 75%
   border-top: 1px solid #00829c
 
-#page-content-wrapper 
+#page-content-wrapper
   min-width: 50vw
 
 
-#wrapper.toggled #sidebar-wrapper 
+#wrapper.toggled #sidebar-wrapper
   margin-left: 0
 
 .lateral
   background-color: #00acce
 
-@media (min-width: 768px) 
-  #sidebar-wrapper 
+@media (min-width: 768px)
+  #sidebar-wrapper
     margin-left: 0
-  
 
-  #page-content-wrapper 
+
+  #page-content-wrapper
     min-width: 0
     width: 100%
-  
 
-  #wrapper.toggled #sidebar-wrapper 
+
+  #wrapper.toggled #sidebar-wrapper
     margin-left: -15rem
-  
-
-
-
-
 /*dashboardmanager end*/
+
+.div-home
+  height: 370px
+  overflow: auto

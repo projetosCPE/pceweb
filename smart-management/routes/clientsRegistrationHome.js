@@ -1,8 +1,8 @@
 const express = require('express');
 const firebase = require('firebase');
-const devices = require('../models/devices');
+const Devices = require('../models/devices');
 const Clients = require('../models/clients');
-const station = require('../models/station');
+const Station = require('../models/station');
 const router = express.Router();
 
 /* GET cadastroClientes page. */

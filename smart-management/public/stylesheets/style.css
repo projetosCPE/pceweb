@@ -7061,7 +7061,7 @@ a {
   background: #254487;
   bottom: 0px;
   z-index: 1;
-  position: absolute;
+  position: relative;
   margin-bottom: 0; }
 
 .footer p {
@@ -7102,13 +7102,14 @@ a {
   top: 60px; }
 
 .menu_fechado span:hover {
-  color: #20609e; }
+  color: #20609e;
+  z-index: 3; }
 
 .sidenav {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 60px;
   left: 0;
   background-color: #00acce;
@@ -7215,5 +7216,8 @@ body {
     margin-left: -15rem; } }
 
 /*dashboardmanager end*/
+.div-home {
+  height: 370px;
+  overflow: auto; }
 
 /*# sourceMappingURL=style.css.map */
