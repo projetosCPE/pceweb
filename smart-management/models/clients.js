@@ -8,9 +8,9 @@ const ClientSchema = new mongoose.Schema({
     address: {
       street: String,
       number: Number,
-      district: String,
       city: String,
       state: String,
+      cep: Number,
     },
     email: String,
     phone: Number,

@@ -1,8 +1,8 @@
 const express = require('express');
 const firebase = require('firebase');
-const devices = require('../models/devices');
-const clients = require('../models/clients');
-const station = require('../models/station');
+const Devices = require('../models/devices');
+const Clients = require('../models/clients');
+const Station = require('../models/station');
 const router = express.Router();
 
 
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 router.post('/', function(req, res, next){
   const ativa = req.body.Stations;
   console.log(ativa);
-  station.create(ativa).then((reqid)=>{
+  Station.create(ativa).then((reqid)=>{
     res.render('manager/registerWorkStation', { title: 'Cadastro de Clientes', layout: 'layoutdashboard' });
     }).catch((error) =>{
       console.log(error);
