@@ -5,14 +5,26 @@ body
   text-align: center
   background: #f0f4f7
   padding-top: 60px
+
+  display: flex
+  min-height: 100vh
+  flex-direction: column
 a
   color: #00B7FF
 
 /*Page Login inicial*/
 .img-login
- background-image: url('/images/imagem_back.jpg')
- width: 100%
+ background-image:url('/images/imagem_back.jpg')
+ background-attachment: fixed
+ background-size: 100%
+ background-repeat: no-repeat
+ padding-top: 3px !important
+ height:auto
+ margin-top: -78px
+ height: 600px
 
+
+  
 // boxe blue-grey
 .input-group input
   padding-top: 15px
@@ -20,12 +32,15 @@ a
   border-radius: none
 
 .boxe
+  
   text-align: center
   min-height: 100vh
   display: flex
-  margin-top: 5px
+  margin-top: 60px
   justify-content: center
   overflow: none
+  z-index: 1
+  
 
 .boxe-img
  height: 40vmin
@@ -42,7 +57,7 @@ a
   background: #254487
   bottom: 0px
   z-index: 1
-  position: absolute
+  position: fixed
   margin-bottom: 0
   
 .footer p
@@ -76,6 +91,15 @@ a
 .dashboard_page
   //background: #254487
 /* Dashboard */
+
+
+#main 
+  transition: margin-left 0.5s
+  padding: 100px
+  padding-top: 0px
+  padding-bottom: 0px
+
+
 .menu_fechado
   align: left
   background: #00acce
@@ -108,7 +132,7 @@ a
   text-decoration: none
   color: white
   display: block
-  transition: 0.3s
+  transition: 0.5s
   text-align: left
 
 .sidenav a:hover
@@ -136,9 +160,6 @@ a
   margin: auto
   width: 50%
 
-#main 
-  transition: margin-left .5s 
-  padding: 20px
 
 
 /*PAGE CADASTROAPARELHO*/
@@ -165,49 +186,3 @@ a
   background: #254085
 
 
-/*dashboardmanager */
-body 
-  overflow-x: hidden
-
-
-  
-#sidebar-wrapper 
-  min-height: 100vh
-  -webkit-transition: margin .25s ease-out
-  -moz-transition: margin .25s ease-out
-  -o-transition: margin .25s ease-out
-  transition: margin .25s ease-out
-  min-width: 10vw
-
-#sidebar-wrapper hr
-  width: 75%
-  border-top: 1px solid #00829c
-
-#page-content-wrapper 
-  min-width: 50vw
-
-
-#wrapper.toggled #sidebar-wrapper 
-  margin-left: 0
-
-.lateral
-  background-color: #00acce
-
-@media (min-width: 768px) 
-  #sidebar-wrapper 
-    margin-left: 0
-  
-
-  #page-content-wrapper 
-    min-width: 0
-    width: 100%
-  
-
-  #wrapper.toggled #sidebar-wrapper 
-    margin-left: -15rem
-  
-
-
-
-
-/*dashboardmanager end*/
