@@ -4,8 +4,8 @@
     <hr>
   </div>
 
-  <form action="/clientsRegistration" class="col-10" method="post">
-    <div class="form-group col-8">
+  <form action="/clientsRegistration" class="col-lg-10" method="post">
+    <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Código do Cliente</p>
       <input type="text" class="form-control" id="intentificação" name="Clients[codClient]"placeholder="">
     </div>
@@ -22,23 +22,23 @@
       <input type="number" class="form-control" id="intentificação" name="Clients[cnpj]"placeholder="">
     </div>
 
-    <div class="form-row">
+    <div class="form-row pl-3">
       <div class="form-group col-6">
         <p class="movap-nomes" align="left" for="inputAddress">Endereço</p>
         <input type="text" class="form-control" id="inputAddress" placeholder="" name="Clients[address][street]">
       </div>
-      <div class="form-group col-1">
+      <div class="form-group col-2 pr-4">
         <p class="movap-nomes" align="left">Número</p>
         <input type="number" class="form-control" name="Clients[address][number]">
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-4">
-        <label for="inputCity">Cidade</label>
+    <div class="form-row pl-3">
+      <div class="form-group col-4 pr-2">
+        <p class="movap-nomes" align="left">Cidade</p>
         <input type="text" class="form-control" id="inputCity" name="Clients[address][city]">
       </div>
-      <div class="form-group col-2">
-        <label for="inputEstado">Estado</label>
+      <div class="form-group col-2 pr-2 pl-2">
+        <p class="movap-nomes" align="left">Estado</p>
         <select id="inputEstado" class="form-control">
           <option selected>Escolher...</option>
           <option>AC</option>
@@ -70,8 +70,8 @@
           <option>TO</option>
         </select>
       </div>
-      <div class="form-group col-2">
-        <label for="inputCEP">CEP</label>
+      <div class="form-group col-2 pr-4">
+        <p class="movap-nomes" align="left">CEP</p>
         <input type="number" class="form-control" id="inputCEP" name="Clients[address][cep]">
       </div>
     </div>
@@ -98,4 +98,5 @@
       <input type="submit" value="CONFIRMAR" class="btn btn-primary" >
     </div>
   </form>
+  <br><br><br><br>
 </div>

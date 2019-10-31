@@ -7193,4 +7193,8 @@ a {
 .movap button {
   background: #254085; }
 
+.div-home {
+  height: 350px;
+  overflow: auto; }
+
 /*# sourceMappingURL=style.css.map */
