@@ -1,6 +1,5 @@
 const express = require('express');
 const firebase = require('firebase');
-const Devices = require('../models/devices');
 const Clients = require('../models/clients');
 const Station = require('../models/station');
 const router = express.Router();
