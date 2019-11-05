@@ -16,7 +16,7 @@
     "firebase": "^6.2.3",
     "hbs": "^4.0.6",
     "http-errors": "~1.6.3",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "mongose": "0.0.2-security",
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
