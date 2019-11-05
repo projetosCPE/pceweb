@@ -8,7 +8,7 @@ const router = express.Router();
 
 /* GET registerWorkStationHome page. */
 router.get('/', (req, res) => {
-  res.render('manager/registerWorkStationHome', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboard' });
+  res.render('manager/registerWorkStationHome', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboardManager' });
 });
 
 module.exports = router;
