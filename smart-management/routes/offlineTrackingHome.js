@@ -8,7 +8,7 @@ const router = express.Router();
 
 /* GET clientsXdevice page. */
 router.get('/', (req, res) => {
-  res.render('manager/offlineTrackingHome', { title: 'Acompanhamento Offline', layout: 'layoutdashboard' });
+  res.render('manager/offlineTrackingHome', { title: 'Acompanhamento Offline', layout: 'layoutdashboardManager' });
 });
 
 module.exports = router;
