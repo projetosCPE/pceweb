@@ -7,7 +7,7 @@ const DeviceSchema = new mongoose.Schema({
   provider: String,
   status: String,
   dateMov: String,// ver se nao é melhor ipo inteiro
-  note: String,// definir tamanho ?
+  note: String// definir tamanho ?
 });
 
 const DeviceModel = mongoose.model('Device', DeviceSchema);
@@ -50,7 +50,6 @@ class Device {
     static create(device) {
       return new Promise((resolve, reject) => {
         DeviceModel.create(device).then((result) => {
-          console.log('----------------------------------3-------------------------------------------');
           resolve(result);
         }).catch((err) => {
           reject(err);

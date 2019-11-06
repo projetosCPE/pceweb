@@ -10,5 +10,4 @@ router.get('/', function(req, res, next){
   res.render('manager/logUse', { title: 'Log de Uso', layout: 'layoutdashboardManager' });
 });
 
-
 module.exports = router;
