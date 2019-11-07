@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const StationSchema = new mongoose.Schema({
     codeStation: String,
-    numberAp: Number,
+    deviceNumber: Number,
     nameEmployed: String,
-    toleranceTime: Number,
+    toleranceTime: String,
     status: String,
     officeHours: String,
     inputHour: String,

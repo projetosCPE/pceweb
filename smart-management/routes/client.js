@@ -19,19 +19,27 @@ router.get('/list', (req, res) => {
 });
 
 router.get('/devices', (req, res) => {
-  res.render('admin/clientsXdevicesHome', { title: 'Clientes X  Aparelhos', layout: 'layoutdashboard' });
+  res.render('admin/clientsXdevicesHome', { title: 'Clientes X  Aparelhos' });
 });
 
 router.get('/clientsXdevices', (req, res) => {
-  res.render('admin/clientsXdevices', { title: 'Clientes X  Aparelhos', layout: 'layoutdashboard' });
+  res.render('admin/clientsXdevices', { title: 'Clientes X  Aparelhos' });
 });
 
 router.post('/signup', function(req, res, next) {
-  const ativa = req.body.Clients;
-  Client.create(ativa).then((id) => {
-    res.redirect('/client/list');
-    }).catch((error) =>{
+  const ativa = req.body.client;
+  ativa.password = "123456";    //Senha padrão
+  ativa.type = "Cliente";
+  firebase.auth().createUserWithEmailAndPassword(ativa.email, ativa.password).then((user) => {
+    delete ativa.password;
+    Client.create(ativa).then((id) => {
+      res.redirect('/client/list');
+    }).catch((error) => {
       console.log(error);
+    });
+  }).catch((error) => {
+    res.redirect('/error');
+    console.log(error);
   });
 });
 

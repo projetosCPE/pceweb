@@ -16,6 +16,7 @@ const ClientSchema = new mongoose.Schema({
     phone: Number,
     nameContact: String,
     status: String,
+    type: String
 }, {timestamps: true, static: false});
 
 const ClientModel = mongoose.model('Client', ClientSchema);
@@ -95,6 +96,21 @@ class Client {
         reject(err);
       });
     });
+   }
+
+   /**
+    * Get a Client by it's email
+    * @param {string} id - Client Email
+    * @returns {Object} - Client Document Data
+    */
+   static getByEmail(id) {
+     return new Promise((resolve, reject) => {
+       ClientModel.findOne({ email: id }).exec().then((result) => {
+         resolve(result);
+       }).catch((err) => {
+         reject(err);
+       });
+     });
    }
 }
 
