@@ -1,0 +1,33 @@
+<div class="movap-titulo">
+  <h4 align="left">LISTA DE CLIENTES</h4>
+  <hr>
+</div>
+<div class="col">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="bg clearfix col">
+                <button type="button" class="btn btn-primary btn-info  btn-secondary float-left"  aria-haspopup="true" aria-expanded="false"/><a  style="color:#ffffff" href="/client/signup">NOVO</a></button>
+                <button type="button" class="btn btn-primary btn-info dropdown-toggle btn-secondary float-right " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    POR DATA
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">POR DATA</a>
+                    <a class="dropdown-item" href="#">POR MEC</a>
+                    <a class="dropdown-item" href="#">POR ...</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </div>
+            <table class="table table-bordered table-responsive-sm mt-4">
+              <tbody id="myTable">
+                {{#each clients}}
+                <tr>
+                  <th scope="row" class="font-book text-center" onclick="location.href='/client/edit/{{id}}'">{{nameContact}}</th>
+                  <th width="50" scope="row" class="font-book text-center" onclick="location.href='/client/edit/{{id}}'">. . .</th>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+         </div>
+   </div>
+</div>
+<br>

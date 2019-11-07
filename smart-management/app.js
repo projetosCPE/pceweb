@@ -9,25 +9,26 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-const loginRouter = require('./routes/login');
+const exphbs = require('express-handlebars');
+
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const clientsRegistrationRouter = require('./routes/clientsRegistration');
-const clientsRegistrationHomeRouter = require('./routes/clientsRegistrationHome');
-const deviceMoveRouter = require('./routes/deviceMove');
-const deviceMoveHomeRouter = require('./routes/deviceMoveHome');
-const deviceRegistrationRouter = require('./routes/deviceRegistration');
-const deviceRegistrationHomeRouter = require('./routes/deviceRegistrationHome');
-const registerWorkStationRouter = require('./routes/registerWorkStation');
-const registerWorkStationHomeRouter = require('./routes/registerWorkStationHome');
-const clientsXdevicesRouter = require('./routes/clientsXdevices');
-const clientsXdevicesHomeRouter = require('./routes/clientsXdevicesHome');
+const deviceRouter = require('./routes/device');
+const clientRouter = require('./routes/client');
+const managerRouter = require('./routes/manager');
+const stationRouter = require('./routes/station');
 const offlineTrackingHomeRouter = require('./routes/offlineTrackingHome');
 const onlineTrackingRouter = require('./routes/onlineTracking');
 const onlineTrackingHomeRouter = require('./routes/onlineTrackingHome');
 const logUseRouter = require('./routes/logUse');
 var mongoose = require('mongoose');
+
 const app = express();
+
+app.engine('hbs', exphbs({
+  defaultLayout: 'layoutdashboard',
+  extname: '.hbs',
+  partialsDir: 'views'
+}));
 
 /**
  *  Database setup
@@ -68,23 +69,14 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
-app.use('/users', usersRouter);
-app.use('/clientsRegistration', clientsRegistrationRouter);
-app.use('/clientsRegistrationHome', clientsRegistrationHomeRouter);
-app.use('/deviceMove', deviceMoveRouter);
-app.use('/deviceMoveHome', deviceMoveHomeRouter);
-app.use('/deviceRegistration', deviceRegistrationRouter);
-app.use('/deviceRegistrationHome', deviceRegistrationHomeRouter);
-app.use('/registerWorkStation', registerWorkStationRouter);
-app.use('/registerWorkStationHome', registerWorkStationHomeRouter);
-app.use('/clientsXdevices', clientsXdevicesRouter);
-app.use('/clientsXdevicesHome', clientsXdevicesHomeRouter);
+app.use('/device', deviceRouter);
+app.use('/client', clientRouter);
+app.use('/manager', managerRouter);
+app.use('/station', stationRouter);
 app.use('/offlineTrackingHome', offlineTrackingHomeRouter);
 app.use('/onlineTracking', onlineTrackingRouter);
 app.use('/onlineTrackingHome', onlineTrackingHomeRouter);
 app.use('/logUse', logUseRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

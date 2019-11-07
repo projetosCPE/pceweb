@@ -16,6 +16,11 @@ const ClientSchema = new mongoose.Schema({
     phone: Number,
     nameContact: String,
     status: String,
+    type: String,
+    devices: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Device'
+    }]
 }, {timestamps: true, static: false});
 
 const ClientModel = mongoose.model('Client', ClientSchema);
@@ -43,7 +48,7 @@ class Client {
    static getById(id) {
      return new Promise((resolve, reject) => {
        ClientModel.findById(id).exec().then((result) => {
-         console.log(result._id);
+         resolve(result);
        }).catch((err) => {
          reject(err);
        });
@@ -96,6 +101,64 @@ class Client {
       });
     });
    }
+
+   /**
+    * Get a Client by it's email
+    * @param {string} id - Client Email
+    * @returns {Object} - Client Document Data
+    */
+   static getByEmail(id) {
+     return new Promise((resolve, reject) => {
+       ClientModel.findOne({ email: id }).exec().then((result) => {
+         resolve(result);
+       }).catch((err) => {
+         reject(err);
+       });
+     });
+   }
+
+   /**
+    * Get a Client by it's codId
+    * @param {string} id - Client CodId
+    * @returns {Object} - Client Document Data
+    */
+   static getByCodClient(id) {
+     return new Promise((resolve, reject) => {
+       ClientModel.findOne({ codClient: id }).exec().then((result) => {
+         resolve(result);
+       }).catch((err) => {
+         reject(err);
+       });
+     });
+   }
+
+   /**
+    * Add Device
+    * @param {string} id - Client Id
+    * @param {string} transaction - Device Id
+    * @returns {null}
+    */
+   static addDevice(id, device) {
+     return new Promise((resolve, reject) => {
+       ClientModel.findByIdAndUpdate(id, { $push: { devices: device } }).catch((err) => {
+         reject(err);
+       });
+     });
+   }
+
+   /**
+    * Remove Device
+    * @param {string} id - Client Id
+    * @param {string} device - Device Id
+    * @returns {null}
+    */
+    static removeDevice(id, device) {
+      return new Promise((resolve, reject) => {
+        ClientModel.findByIdAndUpdate(id, { $pull: { devices: device } }).catch((err) => {
+          reject(err);
+        });
+      });
+    }
 }
 
  module.exports = Client;

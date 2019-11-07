@@ -5,9 +5,19 @@ const DeviceSchema = new mongoose.Schema({
   numId: String, // ou tipo Number?
   dateFab: String,
   provider: String,
-  status: String,
-  dateMov: String,// ver se nao é melhor ipo inteiro
-  note: String,// definir tamanho ?
+  status: {
+    type: String,
+    default: "Pendente"
+  },
+  dateMov: String,
+  note: {
+    type: String,
+    default: " "
+  },
+  client: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Client'
+  }
 });
 
 const DeviceModel = mongoose.model('Device', DeviceSchema);
@@ -50,7 +60,6 @@ class Device {
     static create(device) {
       return new Promise((resolve, reject) => {
         DeviceModel.create(device).then((result) => {
-          console.log('----------------------------------3-------------------------------------------');
           resolve(result);
         }).catch((err) => {
           reject(err);

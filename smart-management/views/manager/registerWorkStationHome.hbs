@@ -1,19 +1,14 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-
 <div class="movap-titulo">
-  <h4 align="left">ESTAÇÕES DE TRABALHO</h4>
+  <h4 align="left">LISTA DE ESTAÇÕES DE TRABALHO</h4>
   <hr>
 </div>
-
-
 <div class="col">
     <div class="row">
-        <div class="col-5">
+        <div class="col-lg-5">
             <div class="bg clearfix col">
-                <button type="button" class="btn btn-primary btn-info  btn-secondary float-left"  aria-haspopup="true" aria-expanded="false"><a  style="color:#ffffff" href="/registerWorkStation">NOVO</a></button>
+                <button type="button" class="btn btn-primary btn-info  btn-secondary float-left"  aria-haspopup="true" aria-expanded="false"/><a  style="color:#ffffff" href="/client/signup">NOVO</a></button>
                 <button type="button" class="btn btn-primary btn-info dropdown-toggle btn-secondary float-right " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    POR NOME
+                    POR DATA
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">POR DATA</a>
@@ -22,15 +17,17 @@
                     <div class="dropdown-divider"></div>
                 </div>
             </div>
-            <br>
-            <div class="col">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search" style="border-right: none;">
-                    <div class="input-group-append">
-                        <div class="input-group-text" style="background-color: #FFF"><i class="fas fa-search"></i></div>
-                    </div>
-                </div>
-            </div>
+            <table class="table table-bordered table-responsive-sm mt-4">
+              <tbody id="myTable">
+                {{#each stations}}
+                <tr>
+                  <th scope="row" class="font-book text-center" onclick="location.href='/station/edit/{{id}}'">{{codeStation}}</th>
+                  <th width="50" scope="row" class="font-book text-center" onclick="location.href='/station/edit/{{id}}'">. . .</th>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
          </div>
    </div>
 </div>
+<br>
