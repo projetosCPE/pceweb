@@ -8,7 +8,7 @@ const Manager = require('../models/manager');
 const router = express.Router();
 
 router.get('/signup', function(req, res, next) {
-  res.render('admin/clientsRegistration', { title: 'Cadastro de Clientes' });
+  res.render('client/managerRegistration', { title: 'Cadastro de Clientes' });
 });
 
 router.get('/list', (req, res) => {
@@ -20,22 +20,14 @@ router.get('/list', (req, res) => {
   });
 });
 
-router.get('/devices', (req, res) => {
-  res.render('admin/clientsXdevicesHome', { title: 'Clientes X  Aparelhos' });
-});
-
-router.get('/clientsXdevices', (req, res) => {
-  res.render('admin/clientsXdevices', { title: 'Clientes X  Aparelhos' });
-});
-
 router.post('/signup', function(req, res, next) {
-  const ativa = req.body.client;
+  const ativa = req.body.manager;
   ativa.password = "123456";    //Senha padrão
-  ativa.type = "Cliente";
+  ativa.type = "Gestor";
   firebase.auth().createUserWithEmailAndPassword(ativa.email, ativa.password).then((user) => {
     delete ativa.password;
-    Client.create(ativa).then((id) => {
-      res.redirect('/client/list');
+    Manager.create(ativa).then((id) => {
+      res.redirect('/manager/list');
     }).catch((error) => {
       console.log(error);
     });

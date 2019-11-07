@@ -5,9 +5,15 @@ const DeviceSchema = new mongoose.Schema({
   numId: String, // ou tipo Number?
   dateFab: String,
   provider: String,
-  status: String,
-  dateMov: String,// ver se nao é melhor ipo inteiro
-  note: String// definir tamanho ?
+  status: {
+    type: String,
+    default: "Pendente"
+  },
+  dateMov: String,
+  note: {
+    type: String,
+    default: " "
+  }
 });
 
 const DeviceModel = mongoose.model('Device', DeviceSchema);

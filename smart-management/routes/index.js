@@ -1,9 +1,11 @@
 const express = require('express');
 const firebase = require('firebase');
-const Devices = require('../models/devices');
+const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
-var router = express.Router();
+const Manager = require('../models/manager');
+
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
