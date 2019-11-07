@@ -7,6 +7,12 @@
     <p class="movap-nomes" align="left">Número de Indentificação</p>
     <input type="text" class="form-control movap-boxcinza" id="intentificação" name="device[numId]" value="{{device.numId}}" readonly>
   </div>
+
+  <div class="form-group col-lg-4">
+    <p class="movap-nomes" align="left">Código do Cliente Responsável</p>
+    <input type="text" class="form-control" id="intentificação" name="device[codClient]" value="{{client.codClient}}">
+  </div>
+
   <div class="form-group col-lg-4">
     <p class="movap-nomes" align="left">Status</p>
     <select class="form-control" name="device[status]">
@@ -27,3 +33,5 @@
   </div>
 
 </form>
+
+<script src="/javascripts/clients-dropdown.js"></script>

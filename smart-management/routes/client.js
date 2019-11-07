@@ -13,7 +13,7 @@ router.get('/signup', function(req, res, next) {
 
 router.get('/list', (req, res) => {
   Client.getAll().then((clients) => {
-    res.render('admin/clientsRegistrationHome', { title: 'Lista de Clientes', clients });
+    res.render('admin/clientsList', { title: 'Lista de Clientes', clients });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);
@@ -53,8 +53,7 @@ router.post('/signup', function(req, res, next) {
 
 router.post('/:id', (req, res) => {
   const client = req.body.client;
-  Client.update(req.params.id, device).then(() => {
-    console.log("Atualizado!");
+  Client.update(req.params.id, client).then(() => {
     res.redirect('/client/list');
   }).catch((error) => {
     console.log(error);

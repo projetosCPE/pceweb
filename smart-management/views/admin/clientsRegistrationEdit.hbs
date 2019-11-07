@@ -1,45 +1,45 @@
 <div class="box-clientsRegistration">
   <div class="movap-titulo">
-    <h4 align="left">CADASTRO DE CLIENTES</h4>
+    <h4 align="left">EDIÇÃO DE CLIENTES</h4>
     <hr>
   </div>
 
-  <form action="/client/signup" class="col-lg-10" method="post">
+  <form action="/client/{{client.id}}" class="col-lg-10" method="post">
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Código do Cliente</p>
-      <input type="text" class="form-control" id="intentificação" name="client[codClient]"placeholder="">
+      <input type="text" class="form-control" id="intentificação" name="client[codClient]" value="{{client.codClient}}">
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Razão Social</p>
-      <input type="text" class="form-control" id="intentificação" name="client[corporateName]"placeholder="">
+      <input type="text" class="form-control" id="intentificação" name="client[corporateName]" value="{{client.corporateName}}">
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Nome Fantasia</p>
-      <input type="text" class="form-control" id="intentificação" name="client[fantasyname]"placeholder="">
+      <input type="text" class="form-control" id="intentificação" name="client[fantasyname]" value="{{client.fantasyname}}">
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">CNPJ</p>
-      <input type="number" class="form-control" id="intentificação" name="client[cnpj]"placeholder="">
+      <input type="number" class="form-control" id="intentificação" name="client[cnpj]" value="{{client.cnpj}}">
     </div>
 
   <div class="form-row pl-3">
       <div class="form-group col-lg-6 col-9">
         <p class="movap-nomes" align="left" for="inputAddress">Endereço</p>
-        <input type="text" class="form-control" id="inputAddress" placeholder="" name="client[address][street]">
+        <input type="text" class="form-control" id="inputAddress" placeholder="" name="client[address][street]" value="{{client.address.street}}">
       </div>
       <div class="form-group col-lg-2 col-3 pr-4">
         <p class="movap-nomes" align="left">Número</p>
-        <input type="number" class="form-control" name="client[address][number]">
+        <input type="number" class="form-control" name="client[address][number]" value="{{client.address.number}}">
       </div>
     </div>
     <div class="form-row pl-3">
       <div class="form-group col-lg-4 col-6 pr-2">
         <p class="movap-nomes" align="left">Cidade</p>
-        <input type="text" class="form-control" id="inputCity" name="client[address][city]">
+        <input type="text" class="form-control" id="inputCity" name="client[address][city]" value="{{client.address.city}}">
       </div>
       <div class="form-group col-lg-2 col-3 pr-2 pl-2">
         <p class="movap-nomes" align="left">Estado</p>
-        <select id="inputEstado" class="form-control">
+        <select id="inputEstado" class="form-control" value="{{client.address.state}}">
           <option selected>Escolher...</option>
           <option>AC</option>
           <option>AL</option>
@@ -72,24 +72,24 @@
       </div>
       <div class="form-group col-lg-2 col-3 pr-4">
         <p class="movap-nomes" align="left">CEP</p>
-        <input type="number" class="form-control" id="inputCEP" name="client[address][cep]">
+        <input type="number" class="form-control" id="inputCEP" name="client[address][cep]" value="{{client.address.cep}}">
       </div>
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">E-mail</p>
-      <input type="email" class="form-control" id="intentificação" name="client[email]" placeholder="">
+      <input type="email" class="form-control" id="intentificação" name="client[email]" value="{{client.email}}" readonly>
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Telefone</p>
-      <input type="tel" class="form-control" id="intentificação" name="client[phone]"placeholder="">
+      <input type="tel" class="form-control" id="intentificação" name="client[phone]" value="{{client.phone}}">
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Nome para contato</p>
-      <input type="text" class="form-control" id="intentificação" name="client[nameContact]"placeholder="">
+      <input type="text" class="form-control" id="intentificação" name="client[nameContact]" value="{{client.nameContact}}">
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Status</p>
-      <select class="form-control" id="exampleFormControlSelect1" name="client[status]">
+      <select class="form-control" id="exampleFormControlSelect1" name="client[status]" value="{{client.status}}">
         <option>Ativo</option>
         <option>Outros</option>
       </select>

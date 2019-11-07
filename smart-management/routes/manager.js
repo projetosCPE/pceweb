@@ -8,12 +8,12 @@ const Manager = require('../models/manager');
 const router = express.Router();
 
 router.get('/signup', function(req, res, next) {
-  res.render('client/managerRegistration', { title: 'Cadastro de Clientes' });
+  res.render('client/managerRegistration', { title: 'Cadastro de Gestores' });
 });
 
 router.get('/list', (req, res) => {
   Client.getAll().then((clients)=>{
-    res.render('admin/clientsRegistrationHome', { title: 'Lista de Clientes', clients });
+    res.render('client/managerList', { title: 'Lista de Gestores', clients });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);

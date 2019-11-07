@@ -13,6 +13,10 @@ const DeviceSchema = new mongoose.Schema({
   note: {
     type: String,
     default: " "
+  },
+  client: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Client'
   }
 });
 

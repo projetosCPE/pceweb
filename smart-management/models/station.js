@@ -38,6 +38,10 @@ const StationSchema = new mongoose.Schema({
         type: Boolean,
         default: 0
       }
+    },
+    manager: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Manager'
     }
 }, {timestamps: true, static: false});
 
@@ -63,15 +67,15 @@ class Station {
     * @param {string} id - Station Id
     * @returns {Object} - Station Document Data
     */
-   static getById(id) {
-     return new Promise((resolve, reject) => {
-       StationModel.findById(id).exec().then((result) => {
-         console.log(result);
-       }).catch((err) => {
-         reject(err);
-       });
-     });
-   }
+    static getById(id) {
+      return new Promise((resolve, reject) => {
+        StationModel.findById(id).exec().then((result) => {
+          resolve(result);
+        }).catch((err) => {
+          reject(err);
+        });
+      });
+    }
 
    /**
     * Create a new Station

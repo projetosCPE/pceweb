@@ -14,7 +14,11 @@ const ManagerSchema = new mongoose.Schema({
     phone: Number,
     name: String,
     status: String,
-    type: String
+    type: String,
+    stations: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Station'
+    }]
 }, {timestamps: true, static: false});
 
 const ManagerModel = mongoose.model('Manager', ManagerSchema);
@@ -39,15 +43,15 @@ class Manager {
     * @param {string} id - Manager Id
     * @returns {Object} - Manager Document Data
     */
-   static getById(id) {
-     return new Promise((resolve, reject) => {
-       ManagerModel.findById(id).exec().then((result) => {
-         console.log(result._id);
-       }).catch((err) => {
-         reject(err);
-       });
-     });
-   }
+    static getById(id) {
+      return new Promise((resolve, reject) => {
+        ManagerModel.findById(id).exec().then((result) => {
+          resolve(result);
+        }).catch((err) => {
+          reject(err);
+        });
+      });
+    }
 
    /**
     * Create a new Manager
@@ -110,6 +114,49 @@ class Manager {
        });
      });
    }
+
+   /**
+    * Get a Client by it's codId
+    * @param {string} id - Client CodId
+    * @returns {Object} - Client Document Data
+    */
+   static getByCodManager(id) {
+     return new Promise((resolve, reject) => {
+       ManagerModel.findOne({ codManager: id }).exec().then((result) => {
+         resolve(result);
+       }).catch((err) => {
+         reject(err);
+       });
+     });
+   }
+
+   /**
+    * Add station
+    * @param {string} id - Manager Id
+    * @param {string} station - station Id
+    * @returns {null}
+    */
+   static addStation(id, station) {
+     return new Promise((resolve, reject) => {
+       ManagerModel.findByIdAndUpdate(id, { $push: { stations: station } }).catch((err) => {
+         reject(err);
+       });
+     });
+   }
+
+   /**
+    * Remove station
+    * @param {string} id - Manager Id
+    * @param {string} station - station Id
+    * @returns {null}
+    */
+    static removeStation(id, station) {
+      return new Promise((resolve, reject) => {
+        ManagerModel.findByIdAndUpdate(id, { $pull: { stations: station } }).catch((err) => {
+          reject(err);
+        });
+      });
+    }
 }
 
  module.exports = Manager;
