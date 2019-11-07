@@ -6,7 +6,16 @@
     <div class="row">
         <div class="col-lg-5">
             <div class="bg clearfix col">
-                <button type="button" class="btn btn-primary btn-info  btn-secondary float-left"  aria-haspopup="true" aria-expanded="false"><a  style="color:#ffffff" href="/device/signup">NOVO</a></button>
+                <button type="button" class="btn btn-primary btn-info  btn-secondary float-left"  aria-haspopup="true" aria-expanded="false"/><a  style="color:#ffffff" href="/clientsRegistration">NOVO</a></button>
+                <button type="button" class="btn btn-primary btn-info dropdown-toggle btn-secondary float-right " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    POR DATA
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">POR DATA</a>
+                    <a class="dropdown-item" href="#">POR MEC</a>
+                    <a class="dropdown-item" href="#">POR ...</a>
+                    <div class="dropdown-divider"></div>
+                </div>
             </div>
             <table class="table table-bordered table-responsive-sm mt-4">
               <tbody id="myTable">
@@ -22,15 +31,3 @@
    </div>
 </div>
 <br>
-
-
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>

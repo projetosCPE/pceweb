@@ -12,11 +12,17 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.get('/list', (req, res) => {
-  Client.getAll().then((clients)=>{
+  Client.getAll().then((clients) => {
     res.render('admin/clientsRegistrationHome', { title: 'Lista de Clientes', clients });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);
+  });
+});
+
+router.get('/edit/:id', (req, res) => {
+  Client.getById(req.params.id).then((client) => {
+    res.render('admin/clientsRegistrationEdit', { title: 'Edição de Perfil', client });
   });
 });
 
@@ -42,6 +48,17 @@ router.post('/signup', function(req, res, next) {
   }).catch((error) => {
     res.redirect('/error');
     console.log(error);
+  });
+});
+
+router.post('/:id', (req, res) => {
+  const client = req.body.client;
+  Client.update(req.params.id, device).then(() => {
+    console.log("Atualizado!");
+    res.redirect('/client/list');
+  }).catch((error) => {
+    console.log(error);
+    res.redirect('/error');
   });
 });
 
