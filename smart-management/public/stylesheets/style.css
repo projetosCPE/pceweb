@@ -7025,7 +7025,6 @@ body {
   text-align: center;
   background: #f0f4f7;
   padding-top: 60px;
-  margin: 0;
   display: flex;
   min-height: 100vh;
   flex-direction: column; }
@@ -7102,7 +7101,7 @@ a {
 
 /* Dashboard */
 #main {
-  transition: margin-left 0.5s;
+  transition: 0.8s;
   padding: 100px;
   padding-top: 0px;
   padding-bottom: 0px; }
@@ -7110,12 +7109,11 @@ a {
 .menu_fechado {
   align: left;
   background: #00acce;
-  width: 60px;
+  width: 80px;
   height: 100%;
   color: white;
   position: fixed;
-  top: 60px;
-  z-index: 1; }
+  top: 60px; }
 
 .menu_fechado span:hover {
   color: #20609e;
