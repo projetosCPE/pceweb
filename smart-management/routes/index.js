@@ -21,11 +21,9 @@ router.get('/dashboard', (req, res) => {
 router.post('/login', function(req, res, next) {
   const user = req.body.user;
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((currentLogged) => {
-    Client.getByEmail(user.email).then((currentLogged) => {
-      if (currentLogged) {
-        // req.session.userType = currentLogged.type;
-        res.redirect('/dashboard');
-      }
+    console.log("Firebase");
+    Client.getByEmail(user.email).then((currentLogged) => {  //currentLoggedNão está funcionando
+      res.redirect('/dashboard');
     }).catch((error) => {
       console.log(error);
     });
