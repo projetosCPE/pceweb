@@ -9,7 +9,7 @@ const router = express.Router();
 
 /* GET cadastroClientes page. */
 router.get('/', function(req, res, next){
-  res.render('manager/logUse', { title: 'Log de Uso', layout: 'layoutDashboardManager' });
+  res.render('manager/logUse', { title: 'Log de Uso', layout: 'layoutdashboardmanager' });
 });
 
 module.exports = router;

@@ -8,11 +8,11 @@ const Manager = require('../models/manager');
 const router = express.Router();
 
 router.get('/signup', (req, res) => {
-  res.render('manager/registerWorkStation', { title: 'Cadastro Estação de Trabalho', layout: 'layoutDashboardManager' });
+  res.render('manager/registerWorkStation', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboardmanager' });
 });
 
 router.get('/', (req, res) => {
-  res.render('manager/registerWorkStationHome', { title: 'Cadastro Estação de Trabalho', layout: 'layoutDashboardManager' });
+  res.render('manager/registerWorkStationHome', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboardmanager' });
 });
 
 router.get('/list', (req, res) => {
