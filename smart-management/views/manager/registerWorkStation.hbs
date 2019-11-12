@@ -8,23 +8,23 @@
             <form action="/station/signup" method="post">
             <div class="form-group col-lg-8">
                 <p class="movap-nomes" align="left">Código da Estação</p>
-                <input type="text" class="form-control" id="intentificação" placeholder="" name="station[codeStation]">
+                <input type="text" class="form-control" id="intentificação" placeholder="" name="station[codeStation]" required>
             </div>
             <div class="form-group col-lg-8">
                 <p class="movap-nomes" align="left">Número do Aparelho</p>
-                <input type="number" class="form-control" id="intentificação" placeholder="" name="station[deviceNumber]">
+                <input type="number" class="form-control" id="intentificação" placeholder="" name="station[deviceNumber]" required>
             </div>
             <div class="form-group col-lg-8">
                 <p class="movap-nomes" align="left">Nome do Colaborador</p>
-                <input type="text" class="form-control" id="intentificação" placeholder="" name="station[nameEmployed]">
+                <input type="text" class="form-control" id="intentificação" placeholder="" name="station[nameEmployed]" required>
             </div>
             <div class="form-group col-lg-8">
                 <p class="movap-nomes" align="left">Tempo de tolerância para uso do aparelho</p>
-                <input type="time" class="form-control" id="intentificação" placeholder="" name="station[toleranceTime]">
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="station[toleranceTime]" required>
             </div>
             <div class="form-group col-lg-8">
                 <p class="movap-nomes" align="left">Status</p>
-                <select class="form-control" id="exampleFormControlSelect1" name="station[status]">
+                <select class="form-control" id="exampleFormControlSelect1" name="station[status]" required>
                   <option>Trabalho</option>
                   <option>Férias</option>
                   <option>Atestado</option>
@@ -33,11 +33,11 @@
             </div>
             <div class="form-group col-lg-8">
                 <p class="movap-nomes" align="left">Horário de entrada</p>
-                <input type="time" class="form-control" id="intentificação" placeholder="" name="station[inputHour]">
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="station[inputHour]" required>
             </div>
             <div class="form-group col-lg-8">
                 <p class="movap-nomes" align="left">Horário de saída</p>
-                <input type="time" class="form-control" id="intentificação" placeholder="" name="station[outputHour]">
+                <input type="time" class="form-control" id="intentificação" placeholder="" name="station[outputHour]" required>
             </div>
             <div class="form-group col-lg-8">
                 <p class="movap-nomes pb-2" align="left">Dias da Semana</p>

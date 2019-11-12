@@ -7,31 +7,31 @@
   <form action="/manager/signup" class="col-lg-10" method="post">
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Código do Gestor</p>
-      <input type="text" class="form-control" id="intentificação" name="manager[codManager]"placeholder="">
+      <input type="text" class="form-control" id="intentificação" name="manager[codManager]"placeholder="" required>
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">CPF</p>
-      <input type="number" class="form-control" id="intentificação" name="manager[cpf]"placeholder="">
+      <input type="number" class="form-control" id="intentificação" name="manager[cpf]"placeholder="" required>
     </div>
 
   <div class="form-row pl-3">
       <div class="form-group col-lg-6 col-9">
         <p class="movap-nomes" align="left" for="inputAddress">Endereço</p>
-        <input type="text" class="form-control" id="inputAddress" placeholder="" name="manager[address][street]">
+        <input type="text" class="form-control" id="inputAddress" placeholder="" name="manager[address][street]" required>
       </div>
       <div class="form-group col-lg-2 col-3 pr-4">
         <p class="movap-nomes" align="left">Número</p>
-        <input type="number" class="form-control" name="manager[address][number]">
+        <input type="number" class="form-control" name="manager[address][number]" required>
       </div>
     </div>
     <div class="form-row pl-3">
       <div class="form-group col-lg-4 col-6 pr-2">
         <p class="movap-nomes" align="left">Cidade</p>
-        <input type="text" class="form-control" id="inputCity" name="manager[address][city]">
+        <input type="text" class="form-control" id="inputCity" name="manager[address][city]" required>
       </div>
       <div class="form-group col-lg-2 col-3 pr-2 pl-2">
         <p class="movap-nomes" align="left">Estado</p>
-        <select id="inputEstado" class="form-control">
+        <select id="inputEstado" class="form-control" required>
           <option selected>Escolher...</option>
           <option>AC</option>
           <option>AL</option>
@@ -64,24 +64,24 @@
       </div>
       <div class="form-group col-lg-2 col-3 pr-4">
         <p class="movap-nomes" align="left">CEP</p>
-        <input type="number" class="form-control" id="inputCEP" name="manager[address][cep]">
+        <input type="text" class="form-control" id="inputCEP" name="manager[address][cep]" required>
       </div>
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">E-mail</p>
-      <input type="email" class="form-control" id="intentificação" name="manager[email]" placeholder="">
+      <input type="email" class="form-control" id="intentificação" name="manager[email]" placeholder="" required>
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Telefone</p>
-      <input type="tel" class="form-control" id="intentificação" name="manager[phone]"placeholder="">
+      <input type="tel" class="form-control" id="intentificação" name="manager[phone]"placeholder="" required>
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Nome</p>
-      <input type="text" class="form-control" id="intentificação" name="manager[name]"placeholder="">
+      <input type="text" class="form-control" id="intentificação" name="manager[name]"placeholder="" required>
     </div>
     <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Status</p>
-      <select class="form-control" id="exampleFormControlSelect1" name="manager[status]">
+      <select class="form-control" id="exampleFormControlSelect1" name="manager[status]" required>
         <option>Ativo</option>
         <option>Outros</option>
       </select>
