@@ -7,9 +7,24 @@ const Manager = require('../models/manager');
 
 const router = express.Router();
 
-/* GET clientsXdevice page. */
 router.get('/', (req, res) => {
-  res.render('manager/offlineTracking', { title: 'Acompanhamento Offline', layout: 'layoutdashboardmanager' });
+  res.render('manager/offlineTrackingHome', { title: 'Acompanhamento Offline', layout: 'layoutdashboardmanager' });
+});
+
+router.get('/list', (req, res) => {
+  Station.getAll().then((station) => {
+    res.render('manager/onlineTracking', { title: 'Lista de Clientes', station });
+  }).catch((error)=> {
+    res.redirect('/error');
+    console.log(error);
+  });
+});
+
+
+router.get('/user/:id', (req, res) => {
+  Station.getById(req.params.id).then((station) => {
+    res.render('manager/onlineTrackingUser', { title: 'Acompanhamento Online', station });
+  });
 });
 
 module.exports = router;

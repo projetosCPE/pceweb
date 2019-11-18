@@ -7,15 +7,34 @@ const Manager = require('../models/manager');
 
 const router = express.Router();
 
-
-/* GET clientsXdevice page. */
 router.get('/', (req, res) => {
-  res.render('manager/onlineTracking', { title: 'Acompanhamento online', layout: 'layoutdashboardmanager' });
+  res.render('manager/onlineTrackingHome', { title: 'Acompanhamento Online', layout: 'layoutdashboardmanager' });
 });
 
 router.get('/user/:id', (req, res) => {
+  Station.getById(req.params.id).then((stations) => {
+    res.render('manager/onlineTrackingUser', { title: 'Acompanhamento Online', stations });
+  });
+});
+
+router.get('/signup', function(req, res, next) {
+  res.render('manager/', { title: '' });
+});
+
+router.get('/list', (req, res) => {
+  console.log(req.session);
+  const manager = req.session;
+  Station.getByManager(manager).then((stations) => {
+    res.render('manager/onlineTrackingHome', { title: 'Acompanhamento Online', stations });
+  }).catch((error)=> {
+    res.redirect('/error');
+    console.log(error);
+  });
+});
+
+router.get('/edit/:id', (req, res) => {
   Station.getById(req.params.id).then((station) => {
-    res.render('manager/onlineTrackingUser', { title: 'Acompanhamento Online', station });
+    res.render('admin/clientsRegistrationEdit', { title: 'Edição de Perfil', station });
   });
 });
 

@@ -77,6 +77,21 @@ class Station {
       });
     }
 
+       /**
+    * Get a Station by it's manager
+    * @param {string} id - Station manager
+    * @returns {Object} - Station Document Data
+    */
+   static getByManager(id) {
+    return new Promise((resolve, reject) => {
+      StationModel.find({ manager: id }).exec().then((result) => {
+        resolve(result);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  }
+
    /**
     * Create a new Station
     * @param {Object} Station - Station Document Data
