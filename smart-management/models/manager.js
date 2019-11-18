@@ -14,7 +14,10 @@ const ManagerSchema = new mongoose.Schema({
     phone: Number,
     name: String,
     status: String,
-    type: String,
+    type: {
+      type: String,
+      default: 'Gestor'
+    },
     stations: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Station'

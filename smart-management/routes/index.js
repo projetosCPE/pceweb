@@ -23,6 +23,15 @@ router.post('/login', function(req, res, next) {
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((currentLogged) => {
     console.log("Firebase");
     Client.getByEmail(user.email).then((currentLogged) => {  //currentLoggedNão está funcionando
+      const test = Client.type;
+      console.log(test);
+      if (Client.type = "Cliente") {
+        res.render('dashboard', { title: 'Home'});
+      }
+      else{
+        res.render('dashboard', { title: 'Home' , layout: 'layoutdashboardmanager'});
+      }
+      console.log(Client.codClient);
       res.redirect('/dashboard');
     }).catch((error) => {
       console.log(error);

@@ -16,7 +16,10 @@ const ClientSchema = new mongoose.Schema({
     phone: Number,
     nameContact: String,
     status: String,
-    type: String,
+    type: {
+      type: String,
+      default: 'Cliente'
+    },
     devices: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Device'
