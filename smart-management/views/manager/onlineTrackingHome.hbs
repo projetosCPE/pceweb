@@ -31,6 +31,23 @@
                     </div>
                 </div>
             </div>
+
+                
+                <div class="row"> 
+                    <table class="table table-bordered table-responsive-sm mt-4">
+                    <tbody id="myTable">
+                        {{#each stations}}
+                        <tr>
+                        <th scope="row" class="font-book text-center col-4" onclick="location.href='/station/list/{{id}}'">{{nameEmployed}}</th>
+                        <th scope="row" class="font-book text-center col-4" onclick="location.href='/station/list/{{id}}'">{{toleranceTime}}</th> 
+                        <th scope="row" class="font-book text-center col-4" onclick="location.href='/station/list/{{id}}'">{{status}}</th>
+                        <th width="30" scope="row" class="font-book text-center col-4" onclick="location.href='/station/list/{{id}}'">. . .</th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                    </table>
+                </div>   
+            
          </div>
    </div>
 </div>

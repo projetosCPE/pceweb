@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', (req, res) => {
+  console.log(req.session);
   res.render('dashboard', { title: 'Home' });
 });
 
@@ -21,8 +22,9 @@ router.get('/dashboard', (req, res) => {
 router.post('/login', function(req, res, next) {
   const user = req.body.user;
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((currentLogged) => {
-    console.log("Firebase");
-    Client.getByEmail(user.email).then((currentLogged) => {  //currentLoggedNão está funcionando
+    Manager.getByEmail(user.email).then((currentLogged) => { 
+      req.session.userId = currentLogged._id;
+      console.log(req.session);
       res.redirect('/dashboard');
     }).catch((error) => {
       console.log(error);
