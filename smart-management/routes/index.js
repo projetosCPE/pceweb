@@ -26,11 +26,13 @@ router.post('/login', function(req, res, next) {
       if (currentLogged) {
         res.redirect('/dashboard');
       }
-    }).catch((Manager.getByUid(userID.user.uid).then((currentLogged1) =>  {
+    }).catch(Manager.getByUid(userID.user.uid).then((currentLogged1) =>  {
       if (currentLogged1){
         res.redirect('/manager/signup')
       }
     }));
+  }).catch((error) => {
+    console.log(error);
   });
 });
 

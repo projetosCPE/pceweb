@@ -8,7 +8,7 @@ const Manager = require('../models/manager');
 const router = express.Router();
 
 router.get('/signup', function(req, res, next) {
-  res.render('client/managerRegistration', { title: 'Cadastro de Gestores' });
+  res.render('client/managerRegistration', { title: 'Cadastro de Gestores', layout: 'layoutDashboardmanager'});
 });
 
 router.get('/list', (req, res) => {
