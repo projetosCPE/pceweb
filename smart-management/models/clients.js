@@ -5,6 +5,9 @@ const ClientSchema = new mongoose.Schema({
     corporateName: String,
     fantasyname: String,
     cnpj: Number,
+    uid: {
+      type: String
+    },
     address: {
       street: String,
       number: Number,
@@ -162,6 +165,22 @@ class Client {
         });
       });
     }
+
+    /**
+    * Get a User by it's uid
+    * @param {string} id - User Uid
+    * @returns {Object} - User Document Data
+    */
+    static getByUid(id) {
+      return new Promise((resolve, reject) => {
+        ClientModel.findOne({ uid: id }).exec().then((result) => {
+          resolve(result);
+        }).catch((err) => {
+          reject(err);
+        });
+      });
+    }
 }
+
 
  module.exports = Client;

@@ -17,29 +17,21 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard', { title: 'Home' });
 });
 
+
 /* POST Login */
 router.post('/login', function(req, res, next) {
   const user = req.body.user;
-  firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((currentLogged) => {
-    console.log("Firebase");
-    Client.getByEmail(user.email).then((currentLogged) => {  //currentLoggedNão está funcionando
-      const test = Client.type;
-      console.log(test);
-      if (Client.type = "Cliente") {
-        res.render('dashboard', { title: 'Home'});
+  firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((userID) => {
+    Client.getByUid(userID.user.uid).then((currentLogged) =>  {
+      if (currentLogged) {
+        res.redirect('/dashboard');
       }
-      else{
-        res.render('dashboard', { title: 'Home' , layout: 'layoutdashboardmanager'});
+    }).catch((Manager.getByUid(userID.user.uid).then((currentLogged1) =>  {
+      if (currentLogged1){
+        res.redirect('/manager/signup')
       }
-      console.log(Client.codClient);
-      res.redirect('/dashboard');
-    }).catch((error) => {
-      console.log(error);
-    });
-  }).catch((error) => {
-    console.log(error);
+    }));
   });
 });
-
 
 module.exports = router;
