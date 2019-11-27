@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/list', (req, res) => {
   Station.getAll().then((station) => {
-    res.render('manager/offlineTracking', { title: 'Lista de Clientes', station });
+    res.render('manager/onlineTracking', { title: 'Lista de Clientes', station });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);

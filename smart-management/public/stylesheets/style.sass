@@ -1,5 +1,4 @@
 @import ../bootstrap/scss/bootstrap.scss
-/* Common Body Elements */
 
 body
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
@@ -12,15 +11,15 @@ body
 a
   color: #00B7FF
 
-/*End- Common Body Elements */
 
-.box-clientsRegistration
-  position: relative
-  width: 90%
+@media only screen and (max-width: 959px)
+    body { font-size: 100px }
+    
 
-/*Page Login */
+/*Page Login inicial*/
 
 .img-login
+
  background-image:url('/images/imagem_back.jpg')
  background-attachment: fixed
  background-size: cover
@@ -30,6 +29,7 @@ a
  width: 100%
  margin-top: -78px
  -webkit-background-size: cover
+
 
 //-----boxe
 .input-group input
@@ -49,6 +49,7 @@ a
 .boxe-img
  height: 40vmin
 
+
 //------footer
 .footer
   text-align: center
@@ -64,9 +65,7 @@ a
 .footer p
   color: white
 
-/*End- Page One-Login*/
-
-/* Common Dashboard Elements */
+/*Page One-Login end*/
 .header_dashboard
   background: linear-gradient(to right, #254487,#00a8cc)
   height: 60px
@@ -93,6 +92,7 @@ a
 
 .dashboard_page
   //background: #254487
+/* Dashboard */
 
 
 #main
@@ -156,10 +156,10 @@ a
   font-size: 36px
   margin-left: 50px
 
-@media (max-width: 450px)
-  .sidenav
-    padding-top: 100px
-  
+@media screen and (max-height: 450px)
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+
 .ld-body
   z-index: 1
 
@@ -167,9 +167,13 @@ a
   margin: auto
   width: 50%
 
-/* End- Common Dashboard Elements */
 
 
+/*PAGE CADASTROAPARELHO*/
+
+
+
+/*FINAL PAGE CADASTROAPARELHO*/
 
 .movap-nomes
   margin: 0 0 0 0
@@ -197,3 +201,9 @@ a
   overflow: auto
 
 
+
+// .fa-search
+//   color: blue
+
+// @media (max-width: 600px)
+//   .tudao height: 200px
