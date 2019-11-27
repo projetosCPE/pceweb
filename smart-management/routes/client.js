@@ -25,10 +25,23 @@ router.get('/edit/:id', (req, res) => {
     res.render('admin/clientsRegistrationEdit', { title: 'Edição de Perfil', client });
   });
 });
+router.get('/user/:id', (req, res) => {
+  Client.getById(req.params.id).then((client) => {
+    res.render('admin/clientsXdevicesHome', { title: 'Acompanhamento Online', client });
+  });
+});
+
 
 router.get('/devices', (req, res) => {
-  res.render('admin/clientsXdevicesHome', { title: 'Clientes X  Aparelhos' });
+  Client.getAll().then((clients) => {
+  res.render('admin/clientsXdevicesHome', { title: 'Clientes X  Aparelhos', clients});
+  }).catch((error)=> {
+    res.redirect('/error');
+    console.log(error);
+  });
 });
+
+
 
 router.get('/clientsXdevices', (req, res) => {
   res.render('admin/clientsXdevices', { title: 'Clientes X  Aparelhos' });
