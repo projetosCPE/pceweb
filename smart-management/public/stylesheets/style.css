@@ -7032,6 +7032,10 @@ body {
 a {
   color: #00B7FF; }
 
+@media only screen and (max-width: 959px) {
+  body {
+    font-size: 100px; } }
+
 /*Page Login inicial*/
 .img-login {
   background-image: url("/images/imagem_back.jpg");
@@ -7179,6 +7183,10 @@ a {
   margin-top: 40px; }
 
 .movap-titulo h4 {
+  color: #00aed0;
+  font-weight: bold; }
+
+.movap-titulo h2 {
   color: #00aed0;
   font-weight: bold; }
 

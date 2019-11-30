@@ -16,9 +16,8 @@ const deviceRouter = require('./routes/device');
 const clientRouter = require('./routes/client');
 const managerRouter = require('./routes/manager');
 const stationRouter = require('./routes/station');
-const offlineTrackingHomeRouter = require('./routes/offlineTrackingHome');
+const offlineTrackingRouter = require('./routes/offlineTracking');
 const onlineTrackingRouter = require('./routes/onlineTracking');
-const onlineTrackingHomeRouter = require('./routes/onlineTrackingHome');
 const logUseRouter = require('./routes/logUse');
 var mongoose = require('mongoose');
 
@@ -73,15 +72,38 @@ app.use('/device', deviceRouter);
 app.use('/client', clientRouter);
 app.use('/manager', managerRouter);
 app.use('/station', stationRouter);
-app.use('/offlineTrackingHome', offlineTrackingHomeRouter);
+app.use('/offlineTracking', offlineTrackingRouter);
 app.use('/onlineTracking', onlineTrackingRouter);
-app.use('/onlineTrackingHome', onlineTrackingHomeRouter);
 app.use('/logUse', logUseRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+/**
+ * Application Configuration
+ */
+app.use(logger('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(session({
+  secret: 'some-private-cpe-key',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 3600000
+  }
+}));
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: true, // true = .sass and false = .scss
+  sourceMap: true
+}));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-5">
             <div class="bg clearfix col">
-                
+
                 <button type="button" class="btn btn-primary btn-info dropdown-toggle btn-secondary float-right " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     POR NOME
                 </button>
@@ -30,6 +30,21 @@
                         <div class="input-group-text" style="background-color: #FFF"><i class="fas fa-search"></i></div>
                     </div>
                 </div>
+            </div>
+
+            <div class="row">
+                <table class="table table-bordered table-responsive-sm mt-5">
+                <tbody id="myTable">
+                    {{#each stations}}
+                    <tr>
+                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{nameEmployed}}</th>
+                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{toleranceTime}}</th>
+                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{status}}</th>
+                    <th width="40" scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">. . .</th>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                </table>
             </div>
          </div>
    </div>
