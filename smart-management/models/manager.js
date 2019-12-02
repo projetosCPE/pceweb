@@ -2,20 +2,12 @@ const mongoose = require('mongoose');
 
 const ManagerSchema = new mongoose.Schema({
     codManager: String,
-    cpf: Number,
+    name: String,
+    office: String,
     uid: {
       type: String
     },
-    address: {
-      street: String,
-      number: Number,
-      city: String,
-      state: String,
-      cep: Number,
-    },
     email: String,
-    phone: Number,
-    name: String,
     status: String,
     type: {
       type: String,
