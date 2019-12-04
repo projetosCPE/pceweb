@@ -2,19 +2,17 @@ const mongoose = require('mongoose');
 
 const ManagerSchema = new mongoose.Schema({
     codManager: String,
-    cpf: Number,
-    address: {
-      street: String,
-      number: Number,
-      city: String,
-      state: String,
-      cep: Number,
+    name: String,
+    office: String,
+    uid: {
+      type: String
     },
     email: String,
-    phone: Number,
-    name: String,
     status: String,
-    type: String,
+    type: {
+      type: String,
+      default: 'Gestor'
+    },
     stations: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Station'
@@ -153,6 +151,21 @@ class Manager {
     static removeStation(id, station) {
       return new Promise((resolve, reject) => {
         ManagerModel.findByIdAndUpdate(id, { $pull: { stations: station } }).catch((err) => {
+          reject(err);
+        });
+      });
+    }
+
+    /**
+     * Get a User by it's uid
+     * @param {string} id - User Uid
+     * @returns {Object} - User Document Data
+     */
+    static getByUid(id) {
+      return new Promise((resolve, reject) => {
+        ManagerModel.findOne({ uid: id }).exec().then((result) => {
+          resolve(result);
+        }).catch((err) => {
           reject(err);
         });
       });
