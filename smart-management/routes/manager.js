@@ -14,11 +14,17 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.get('/list', (req, res) => {
-  Client.getAll().then((clients)=>{
-    res.render('client/managerList', { title: 'Lista de Gestores',layout: 'layoutDashboardclientadm', clients });
+  Manager.getAll().then((managers)=>{
+    res.render('client/managerList', { title: 'Lista de Gestores',layout: 'layoutDashboardclientadm', managers });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);
+  });
+});
+
+router.get('/edit/:id', (req, res) => {
+  Manager.getById(req.params.id).then((manager) => {
+    res.render('client/managerRegistrationedit', { title: 'Edição de Perfil', layout:'layoutDashboardclientadm',manager });
   });
 });
 

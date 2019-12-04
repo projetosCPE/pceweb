@@ -25,11 +25,10 @@ router.post('/login', (req, res) => {
   const user = req.body.user;
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((userID) => {
     User.getByUid(userID.user.uid).then((currentLogged) => {
-      console.log(currentLogged.type);
-      if(currentLogged.type = "Gestor"){
+      if(currentLogged.type == "Gestor"){
         res.redirect('/logUse');
       }
-      if(currentLogged.type = "ClienteADM"){
+      if(currentLogged.type == "ClienteADM"){
         res.redirect('/manager/signup');
       }
     });
