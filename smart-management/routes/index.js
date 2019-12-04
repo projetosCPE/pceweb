@@ -18,21 +18,24 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard', { title: 'Home' });
 });
 
+
 /* POST Login */
 router.post('/login', function(req, res, next) {
   const user = req.body.user;
-  firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((currentLogged) => {
-    Manager.getByEmail(user.email).then((currentLogged) => { 
-      req.session.userId = currentLogged._id;
-      console.log(req.session);
-      res.redirect('/dashboard');
-    }).catch((error) => {
-      console.log(error);
-    });
+  firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((userID) => {
+    Client.getByUid(userID.user.uid).then((currentLogged) =>  {
+      if (currentLogged) {
+        res.redirect('/dashboard');
+      }
+    }).catch(Manager.getByUid(userID.user.uid).then((currentLogged1) =>  {
+      if (currentLogged1){
+        res.redirect('/manager/signup')
+      }
+    }));
   }).catch((error) => {
     console.log(error);
+    res.redirect('/login');
   });
 });
-
 
 module.exports = router;
