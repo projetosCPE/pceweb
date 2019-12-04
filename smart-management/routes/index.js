@@ -4,6 +4,7 @@ const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
 const Manager = require('../models/manager');
+const User = require('../models/user');
 
 const router = express.Router();
 
@@ -20,18 +21,18 @@ router.get('/dashboard', (req, res) => {
 
 
 /* POST Login */
-router.post('/login', function(req, res, next) {
+router.post('/login', (req, res) => {
   const user = req.body.user;
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((userID) => {
-    Client.getByUid(userID.user.uid).then((currentLogged) =>  {
-      if (currentLogged) {
-        res.redirect('/dashboard');
+    User.getByUid(userID.user.uid).then((currentLogged) => {
+      console.log(currentLogged.type);
+      if(currentLogged.type = "Gestor"){
+        res.redirect('/logUse');
       }
-    }).catch(Manager.getByUid(userID.user.uid).then((currentLogged1) =>  {
-      if (currentLogged1){
-        res.redirect('/manager/signup')
+      if(currentLogged.type = "ClienteADM"){
+        res.redirect('/manager/signup');
       }
-    }));
+    });
   }).catch((error) => {
     console.log(error);
     res.redirect('/login');
