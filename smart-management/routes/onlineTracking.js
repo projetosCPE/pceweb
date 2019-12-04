@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/user/:id', (req, res) => {
   Station.getById(req.params.id).then((stations) => {
-    res.render('manager/onlineTrackingUser', { title: 'Acompanhamento Online', stations });
+    res.render('manager/onlineTrackingUser', { title: 'Acompanhamento Online', layout: 'layoutdashboardmanager', stations });
   });
 });
 
@@ -25,7 +25,7 @@ router.get('/list', (req, res) => {
   console.log(req.session);
   const manager = req.session;
   Station.getByManager(manager).then((stations) => {
-    res.render('manager/onlineTrackingHome', { title: 'Acompanhamento Online', stations });
+    res.render('manager/onlineTrackingHome', { title: 'Acompanhamento Online', layout: 'layoutdashboardmanager',stations });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);
@@ -34,7 +34,7 @@ router.get('/list', (req, res) => {
 
 router.get('/edit/:id', (req, res) => {
   Station.getById(req.params.id).then((station) => {
-    res.render('admin/clientsRegistrationEdit', { title: 'Edição de Perfil', station });
+    res.render('admin/clientsRegistrationEdit', { title: 'Edição de Perfil', layout: 'layoutdashboardmanager',station });
   });
 });
 

@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/list', (req, res) => {
   Station.getAll().then((station) => {
-    res.render('manager/onlineTracking', { title: 'Lista de Clientes', station });
+    res.render('manager/offlineTracking', { title: 'Lista de Clientes', station });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);
@@ -23,7 +23,13 @@ router.get('/list', (req, res) => {
 
 router.get('/user/:id', (req, res) => {
   Station.getById(req.params.id).then((station) => {
-    res.render('manager/onlineTrackingUser', { title: 'Acompanhamento Online', station });
+    res.render('manager/onlineTrackingUser', { title: 'Acompanhamento Online', layout: 'layoutdashboardmanager',station });
+  });
+});
+
+router.get('/edit/:id', (req, res) => {
+  Station.getById(req.params.id).then((station) => {
+    res.render('admin/clientsRegistrationEdit', { title: 'Edição de Perfil', layout: 'layoutdashboardmanager',station });
   });
 });
 
