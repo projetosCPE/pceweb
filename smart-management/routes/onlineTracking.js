@@ -8,7 +8,7 @@ const Manager = require('../models/manager');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('manager/onlineTrackingHome', { title: 'Acompanhamento Online', layout: 'layoutdashboardmanager' });
+  res.render('manager/onlineTracking', { title: 'Acompanhamento Online', layout: 'layoutdashboardmanager' });
 });
 
 router.get('/user/:id', (req, res) => {

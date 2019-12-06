@@ -7032,10 +7032,6 @@ body {
 a {
   color: #00B7FF; }
 
-@media only screen and (max-width: 959px) {
-  body {
-    font-size: 100px; } }
-
 /*Page Login inicial*/
 .img-login {
   background-image: url("/images/imagem_back.jpg");
