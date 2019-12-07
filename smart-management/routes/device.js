@@ -64,4 +64,10 @@ router.post('/:id', (req, res) => {
   });
 });
 
+
+router.post('/receive', (req, res) =>{
+  console.log(req.headers);
+  return res.send(req.headers);
+});
+
 module.exports = router;

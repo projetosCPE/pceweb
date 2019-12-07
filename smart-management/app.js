@@ -20,7 +20,7 @@ const offlineTrackingRouter = require('./routes/offlineTracking');
 const onlineTrackingRouter = require('./routes/onlineTracking');
 const logUseRouter = require('./routes/logUse');
 var mongoose = require('mongoose');
-
+const cors = require('cors');
 const app = express();
 
 app.engine('hbs', exphbs({
@@ -115,5 +115,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+app.use(cors());
+
+
+
+
 
 module.exports = app;

@@ -4,6 +4,7 @@ const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
 const Manager = require('../models/manager');
+const User = require('../models/user');
 
 const router = express.Router();
 
@@ -18,21 +19,23 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard', { title: 'Home' });
 });
 
+
 /* POST Login */
-router.post('/login', function(req, res, next) {
+router.post('/login', (req, res) => {
   const user = req.body.user;
-  firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((currentLogged) => {
-    Manager.getByEmail(user.email).then((currentLogged) => { 
-      req.session.userId = currentLogged._id;
-      console.log(req.session);
-      res.redirect('/dashboard');
-    }).catch((error) => {
-      console.log(error);
+  firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((userID) => {
+    User.getByUid(userID.user.uid).then((currentLogged) => {
+      if(currentLogged.type == "Gestor"){
+        res.redirect('/logUse');
+      }
+      if(currentLogged.type == "ClienteADM"){
+        res.redirect('/manager/signup');
+      }
     });
   }).catch((error) => {
     console.log(error);
+    res.redirect('/login');
   });
 });
-
 
 module.exports = router;

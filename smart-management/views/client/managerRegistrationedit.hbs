@@ -1,0 +1,41 @@
+<div class="box-clientsRegistration">
+  <div class="movap-titulo">
+    <h4 align="left">EDIÇÃO DE GESTORES</h4>
+    <hr>
+  </div>
+
+  <form action="/manager/{{manager.id}}" class="col-lg-10" method="post">
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">Código do Gestor</p>
+      <input type="text" class="form-control" id="intentificação" name="manager[codManager]"placeholder="" value="{{manager.codManager}}">
+    </div>
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">Nome</p>
+      <input type="text" class="form-control" id="intentificação" name="manager[name]"placeholder="" value="{{manager.name}}">
+    </div>
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">Cargo</p>
+      <input type="text" class="form-control" id="intentificação" name="manager[office]"placeholder="" value="{{manager.codManager}}">
+    </div>
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">E-mail</p>
+      <input type="email" class="form-control" id="intentificação" name="manager[email]" placeholder="" value="{{manager.email}}" disabled>
+    </div>
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">Status</p>
+      <select class="form-control" id="exampleFormControlSelect1" name="manager[status]" value="{{manager.status}}">
+        <option>Ativo</option>
+        <option>Outros</option>
+      </select>
+    </div>
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">Categoria</p>
+      <input type="text" class="form-control movap-boxcinza" id="intentificação" placeholder="Gestor" disabled>
+    </div>
+
+    <div class="form-group justify-content-start col-md-8 d-flex movap">
+      <input type="submit" value="CONFIRMAR" class="btn btn-primary" >
+    </div>
+  </form>
+  <br><br><br><br>
+</div>
