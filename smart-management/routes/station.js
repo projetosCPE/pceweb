@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 router.get('/list', (req, res) => {
   Station.getAll().then((stations) => {
     console.log(stations);
-    res.render('manager/registerWorkStationHome', { title: 'Lista de Estações de Trabalho', stations });
+    res.render('manager/registerWorkStationHome', { title: 'Lista de Estações de Trabalho', layout: 'layoutdashboardmanager', stations });
   }).catch((error)=> {
     res.redirect('/error');
     console.log(error);
@@ -30,7 +30,7 @@ router.get('/movimentation/:id', (req, res) => {
   Device.getById(req.params.id).then((device) => {
     Client.getById(device.client).then((client) => {
       console.log(client);
-      res.render('admin/deviceMove', { title: 'Movimentação de Aparelhos', device, client });
+      res.render('admin/deviceMove', { title: 'Movimentação de Aparelhos', layout: 'layoutdashboardmanager', device, client });
     });
   });
 });
@@ -40,7 +40,7 @@ router.get('/edit/:id', (req, res) => {
     console.log(station);
     Manager.getById(station.manager).then((manager) => {
       console.log(manager);
-    res.render('manager/registerWorkStationEdit', { title: 'Edição da Estação de Trabalho', station, manager });
+    res.render('manager/registerWorkStationEdit', { title: 'Edição da Estação de Trabalho', layout: 'layoutdashboardmanager',station, manager });
     });
   });
 });
