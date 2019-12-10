@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const StationSchema = new mongoose.Schema({
-    codeStation: String,
+    codeStation: {
+      type: String,
+      unique: true
+    }, //trabalhar com o erro depois em cach error
     deviceNumber: Number,
     nameEmployed: String,
     toleranceTime: String,
