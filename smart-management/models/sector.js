@@ -1,34 +1,22 @@
 const mongoose = require('mongoose');
 
-const ManagerSchema = new mongoose.Schema({
-    codManager: String,
+const SectorSchema = new mongoose.Schema({
+    codSector: String,
     name: String,
-    office: String,
-    uid: {
-      type: String
-    },
-    email: String,
-    status: String,
-    type: {
-      type: String,
-      default: 'Gestor'
-    },
-    stations: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Station'
-    }]
+    manager: String,
+    idManager: String,
 }, {timestamps: true, static: false});
 
-const ManagerModel = mongoose.model('Manager', ManagerSchema);
+const SectorModel = mongoose.model('Sector', SectorSchema);
 
-class Manager {
+class Sector {
    /**
-    * Get all Managers from database
-    * @returns {Array} Array of Managers
+    * Get all Sectors from database
+    * @returns {Array} Array of Sectors
     */
    static getAll() {
      return new Promise((resolve, reject) => {
-       ManagerModel.find({}).exec().then((results) => {
+       SectorModel.find({}).exec().then((results) => {
          resolve(results);
        }).catch((err) => {
          reject(err);
@@ -37,13 +25,13 @@ class Manager {
    }
 
    /**
-    * Get a Manager by it's id
-    * @param {string} id - Manager Id
-    * @returns {Object} - Manager Document Data
+    * Get a Sector by it's id
+    * @param {string} id - Sector Id
+    * @returns {Object} - Sector Document Data
     */
     static getById(id) {
       return new Promise((resolve, reject) => {
-        ManagerModel.findById(id).exec().then((result) => {
+        SectorModel.findById(id).exec().then((result) => {
           resolve(result);
         }).catch((err) => {
           reject(err);
@@ -52,13 +40,13 @@ class Manager {
     }
 
    /**
-    * Create a new Manager
-    * @param {Object} Manager - Manager Document Data
-    * @returns {string} - New Manager Id
+    * Create a new Sector
+    * @param {Object} Sector - Sector Document Data
+    * @returns {string} - New Sector Id
     */
-   static create(Manager) {
+   static create(Sector) {
      return new Promise((resolve, reject) => {
-       ManagerModel.create(Manager).then((result) => {
+       SectorModel.create(Sector).then((result) => {
          resolve(result);
          console.log(result);
        }).catch((err) => {
@@ -68,14 +56,14 @@ class Manager {
    }
 
    /**
-    * Update a Manager
-    * @param {string} id - Manager Id
-    * @param {Object} Manager - Manager Document Data
+    * Update a Sector
+    * @param {string} id - Sector Id
+    * @param {Object} Sector - Sector Document Data
     * @returns {null}
     */
-   static update(id, Manager) {
+   static update(id, Sector) {
      return new Promise((resolve, reject) => {
-       ManagerModel.findByIdAndUpdate(id, Manager).then(() => {
+       SectorModel.findByIdAndUpdate(id, Sector).then(() => {
          resolve();
        }).catch((err) => {
          reject(err);
@@ -84,13 +72,13 @@ class Manager {
    }
 
    /**
-   * Delete a Manager
-   * @param {string} id - Manager Id
+   * Delete a Sector
+   * @param {string} id - Sector Id
    * @returns {null}
    */
    static delete(id) {
     return new Promise((resolve, reject) => {
-      ManagerModel.findByIdAndUpdate(id, { deleted: 1 }).then(() => {
+      SectorModel.findByIdAndUpdate(id, { deleted: 1 }).then(() => {
         resolve();
       }).catch((err) => {
         reject(err);
@@ -99,28 +87,13 @@ class Manager {
    }
 
    /**
-    * Get a Manager by it's email
-    * @param {string} id - Manager Email
-    * @returns {Object} - Manager Document Data
+    * Get a Sector by it's email
+    * @param {string} id - Sector Email
+    * @returns {Object} - Sector Document Data
     */
    static getByEmail(id) {
      return new Promise((resolve, reject) => {
-       ManagerModel.findOne({ email: id }).exec().then((result) => {
-         resolve(result);
-       }).catch((err) => {
-         reject(err);
-       });
-     });
-   }
-
-   /**
-    * Get a Manager by it's name
-    * @param {string} id - Manager name
-    * @returns {Object} - Manager Document Data
-    */
-   static getByName(id) {
-     return new Promise((resolve, reject) => {
-       ManagerModel.findOne({ name: id }).exec().then((result) => {
+       SectorModel.findOne({ email: id }).exec().then((result) => {
          resolve(result);
        }).catch((err) => {
          reject(err);
@@ -133,9 +106,9 @@ class Manager {
     * @param {string} id - Client CodId
     * @returns {Object} - Client Document Data
     */
-   static getByCodManager(id) {
+   static getByCodSector(id) {
      return new Promise((resolve, reject) => {
-       ManagerModel.findOne({ codManager: id }).exec().then((result) => {
+       SectorModel.findOne({ codSector: id }).exec().then((result) => {
          resolve(result);
        }).catch((err) => {
          reject(err);
@@ -145,13 +118,13 @@ class Manager {
 
    /**
     * Add station
-    * @param {string} id - Manager Id
+    * @param {string} id - Sector Id
     * @param {string} station - station Id
     * @returns {null}
     */
    static addStation(id, station) {
      return new Promise((resolve, reject) => {
-       ManagerModel.findByIdAndUpdate(id, { $push: { stations: station } }).catch((err) => {
+       SectorModel.findByIdAndUpdate(id, { $push: { stations: station } }).catch((err) => {
          reject(err);
        });
      });
@@ -159,13 +132,13 @@ class Manager {
 
    /**
     * Remove station
-    * @param {string} id - Manager Id
+    * @param {string} id - Sector Id
     * @param {string} station - station Id
     * @returns {null}
     */
     static removeStation(id, station) {
       return new Promise((resolve, reject) => {
-        ManagerModel.findByIdAndUpdate(id, { $pull: { stations: station } }).catch((err) => {
+        SectorModel.findByIdAndUpdate(id, { $pull: { stations: station } }).catch((err) => {
           reject(err);
         });
       });
@@ -178,7 +151,7 @@ class Manager {
      */
     static getByUid(id) {
       return new Promise((resolve, reject) => {
-        ManagerModel.findOne({ uid: id }).exec().then((result) => {
+        SectorModel.findOne({ uid: id }).exec().then((result) => {
           resolve(result);
         }).catch((err) => {
           reject(err);
@@ -187,4 +160,4 @@ class Manager {
     }
 }
 
- module.exports = Manager;
+ module.exports = Sector;

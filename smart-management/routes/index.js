@@ -31,6 +31,9 @@ router.post('/login', (req, res) => {
       if(currentLogged.type == "ClienteADM"){
         res.redirect('/manager/signup');
       }
+      if(currentLogged.type == "ADM"){
+        res.redirect('/client/signup');
+      }
     });
   }).catch((error) => {
     console.log(error);
