@@ -1,0 +1,43 @@
+<div class="movap-titulo">
+  <h4 align="left">CADASTRO DOS SETORES</h4>
+  <hr>
+</div>
+<div class="col">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="bg clearfix col">
+                <button type="button" class="btn btn-primary btn-info  btn-secondary float-left"  aria-haspopup="true" aria-expanded="false"/><a  style="color:#ffffff" href="/device/signup">NOVO</a></button>
+                <button type="button" class="btn btn-primary btn-info dropdown-toggle btn-secondary float-right " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    POR DATA
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">POR DATA</a>
+                    <a class="dropdown-item" href="#">POR MAC</a>
+                    <a class="dropdown-item" href="#">POR ...</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group">
+                  <div class="input-group">
+                      <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search" style="border-right: none;">
+                      <div class="input-group-append">
+                          <div class="input-group-text" style="background-color: #FFF"><i class="fas fa-search"> </i></div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-responsive-sm mt-4">
+              <tbody id="myTable">
+                {{#each sectors}}
+                <tr>
+                  <th scope="row" class="font-book text-center" onclick="location.href='/device/movimentation/{{id}}'">{{name}}</th>
+                  <th width="50" scope="row" class="font-book text-center" onclick="location.href='/device/movimentation/{{id}}'">. . .</th>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+         </div>
+   </div>
+</div>
+<br>

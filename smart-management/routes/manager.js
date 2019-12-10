@@ -5,6 +5,7 @@ const Client = require('../models/clients');
 const Station = require('../models/station');
 const Manager = require('../models/manager');
 const User = require('../models/user');
+const Sector = require('../models/sector');
 
 
 const router = express.Router();
