@@ -26,6 +26,8 @@ router.post('/login', (req, res) => {
   const user = req.body.user;
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((userID) => {
     User.getByUid(userID.user.uid).then((currentLogged) => {
+      // req.session.user.uid = currentLogged.user.uid;
+      // req.session.email = currentLogged.user.email;
       if(currentLogged.type == "Gestor"){
         res.redirect('/logUse');
       }
@@ -42,13 +44,14 @@ router.post('/login', (req, res) => {
   });
 });
 
+
 // GET /logout
-router.get('/logout', auth.isAuthenticated, (req, res) => {
+router.get('/logout', (req, res, next) => {
   firebase.auth().signOut().then(() => {
-      delete req.session.fullname;
-      delete req.session.userId;
-      delete req.session.email;
-      res.redirect('/login');
+      // delete req.session.fullName;
+      // delete req.session.userId;
+      // delete req.session.email;
+      res.redirect('/');
     }).catch((error) => {
       console.log(error);
       res.redirect('/error');
