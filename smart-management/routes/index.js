@@ -1,5 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
+const auth = require('./middleware/auth');
 const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
@@ -29,10 +30,10 @@ router.post('/login', (req, res) => {
         res.redirect('/logUse');
       }
       if(currentLogged.type == "ClienteADM"){
-        res.redirect('/manager/signup');
+        res.redirect('/manager/list');
       }
       if(currentLogged.type == "ADM"){
-        res.redirect('/client/signup');
+        res.redirect('/client/list');
       }
     });
   }).catch((error) => {
@@ -40,5 +41,18 @@ router.post('/login', (req, res) => {
     res.redirect('/login');
   });
 });
+
+// GET /logout
+router.get('/logout', auth.isAuthenticated, (req, res) => {
+  firebase.auth().signOut().then(() => {
+      delete req.session.fullname;
+      delete req.session.userId;
+      delete req.session.email;
+      res.redirect('/login');
+    }).catch((error) => {
+      console.log(error);
+      res.redirect('/error');
+    });
+  });
 
 module.exports = router;
