@@ -1,0 +1,27 @@
+<div class="movap-titulo">
+  <h4 align="left">EDIÇÃO DE SETORES</h4>
+  <hr>
+</div>
+
+<form action="/sector/{{sector.id}}" method="post">
+  <div class="form-group col-8">
+    <p class="movap-nomes" align="left">Código do Setor</p>
+    <input type="text" class="form-control" id="intentificação" name="sector[codSector]" value="{{sector.codSector}}">
+  </div>
+  <div class="form-group col-8">
+    <p class="movap-nomes" align="left">Nome</p>
+    <input type="text" class="form-control" id="intentificação" name="sector[name]" value="{{sector.name}}">
+  </div>
+  <div class="form-group col-8">
+    <p class="movap-nomes" align="left">Gestor</p>
+    <select class="form-control" name="sector[idManager]" >
+      <option value="{{sector.idManager}}">{{sector.manager}}</option>
+      {{#each managers}}
+      <option value="{{id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group justify-content-start col-md-8 d-flex movap">
+    <input type="submit" value="CONFIRMAR" class="btn btn-primary">
+  </div>
+</form>

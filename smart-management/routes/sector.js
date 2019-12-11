@@ -18,8 +18,8 @@ router.get('/signup', function(req, res, next) {
 
 router.post('/signup', function(req, res, next) {
   const ativa = req.body.sector;
-  Manager.getByName(ativa.manager).then((gestor) => {
-    ativa.idManager = gestor.id;
+  Manager.getById(ativa.idManager).then((gestor) => {
+    ativa.manager = gestor.name;
     Sector.create(ativa).then((id) =>{
       res.redirect('/sector/list');
     }).catch((error) => {
@@ -41,16 +41,33 @@ router.get('/list', (req, res) => {
   });
 });
 
+router.get('/edit/:id', (req, res) => {
+  Sector.getById(req.params.id).then((sector) => {
+    Manager.getAll().then((managers) => {
+      res.render('client/registerSectorsEdit', { title: 'Edição de Setores', layout:'layoutdashboardclientadm',sector,managers });
+    }).catch((error) => {
+      res.redirect('/error');
+      console.log(error);
+    });
+  });
+});
 
-
-
-router.get('/list', (req, res) => {
-  Manager.getAll().then((managers)=>{
-    res.render('client/sectorslist', { title: 'Lista de Setores',layout: 'layoutdashboardclientadm', managers });
+router.post('/:id', (req, res) => {
+  const sector = req.body.sector;
+  console.log(sector);
+  Manager.getById(sector.idManager).then((gestor) => {
+    sector.manager = gestor.name;
+    Sector.update(req.params.id, sector).then(() => {
+      res.redirect('/sector/list');
+    }).catch((error) => {
+      res.redirect('/error');
+      console.log(error);
+    });
   }).catch((error) => {
     res.redirect('/error');
     console.log(error);
   });
 });
+
 
 module.exports = router;
