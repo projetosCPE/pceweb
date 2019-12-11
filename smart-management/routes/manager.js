@@ -51,4 +51,14 @@ router.post('/signup', function(req, res, next) {
     console.log(error);
   });
 });
+
+router.post('/:id', (req, res) => {
+  const manager = req.body.manager;
+  Manager.update(req.params.id, manager).then(() => {
+    res.redirect('/manager/list');
+  }).catch((error) => {
+    console.log(error);
+    res.redirect('/error');
+  });
+});
 module.exports = router;
