@@ -39,6 +39,18 @@ router.post('/signup', (req, res) => {
   });
 });
 
+
+router.post('/receiveData::idesp::id::endmac', (req, res) =>{
+  if(! (req.params.idesp && req.params.endmac && req.params.id) ){
+    return res.send("Formato inválido");
+  }
+  console.log("ID do esp: " + req.params.idesp);
+  console.log("MAC do esp: " + req.params.endmac);
+  console.log("Variável recebida: " + req.params.id);
+  return res.send("Recebido");
+});
+
+
 router.post('/:id', (req, res) => {
   const device = req.body.device;
   const deviceId = req.params.id;
@@ -62,12 +74,6 @@ router.post('/:id', (req, res) => {
       });
     });
   });
-});
-
-
-router.post('/receive', (req, res) =>{
-  console.log(req.headers);
-  return res.send(req.headers);
 });
 
 module.exports = router;
