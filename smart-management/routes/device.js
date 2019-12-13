@@ -4,6 +4,7 @@ const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
 const Manager = require('../models/manager');
+const Sensor = require('../models/sensor')
 
 const router = express.Router();
 
@@ -40,13 +41,39 @@ router.post('/signup', (req, res) => {
 });
 
 
-router.post('/receiveData::idesp::id::endmac', (req, res) =>{
-  if(! (req.params.idesp && req.params.endmac && req.params.id) ){
+router.post('/receiveData::idesp::data::idmac', (req, res) =>{
+  if(! (req.params.idesp && req.params.idmac && req.params.data) ){
     return res.send("Formato inválido");
   }
-  console.log("ID do esp: " + req.params.idesp);
-  console.log("MAC do esp: " + req.params.endmac);
-  console.log("Variável recebida: " + req.params.id);
+  // console.log("ID do esp: " + req.params.idesp);
+  // console.log("MAC do esp: " + req.params.idmac);
+  // console.log("Variável recebida: " + req.params.data);
+  const ativa = req.params;
+  console.log(ativa);
+  Sensor.create(ativa).then((id) =>{
+    Station.getByIdesp(ativa.idesp).then((station) => {
+      if(ativa.data == 0){
+        // console.log("Em uso");
+        station[0].dataesp = "Em uso";
+        Station.update(station[0]._id, station[0]).then(() =>{
+        }).catch((error) =>{
+          console.log(error);
+      });
+      }
+
+      else if(ativa.data == 1){
+        // console.log("Desligado");
+        station[0].dataesp = "Desligado";
+        Station.update(station[0]._id, station[0]).then(() =>{
+        }).catch((error) =>{
+          console.log(error);
+        });
+      }
+      // console.log(station);
+    });
+  }).catch((error) =>{
+  console.log(error);
+    });
   return res.send("Recebido");
 });
 
