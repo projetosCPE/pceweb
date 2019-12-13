@@ -5,7 +5,12 @@ const StationSchema = new mongoose.Schema({
       type: String,
       unique: true
     }, //trabalhar com o erro depois em cach error
-    deviceNumber: Number,
+    // devicecode: String,
+    idesp: String,
+    dataesp: {
+      type: String,
+      default: "Desligado"
+    },
     nameEmployed: String,
     toleranceTime: String,
     status: String,
@@ -94,6 +99,21 @@ class Station {
       });
     });
   }
+
+      /**
+    * Get a Station by idesp
+    * @param {string} id - idesp
+    * @returns {Object} - Station Document Data
+    */
+    static getByIdesp(id) {
+    return new Promise((resolve, reject) => {
+     StationModel.find({ idesp: id }).exec().then((result) => {
+       resolve(result);
+     }).catch((err) => {
+       reject(err);
+     });
+    });
+    }
 
    /**
     * Create a new Station
