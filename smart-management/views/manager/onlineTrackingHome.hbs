@@ -31,16 +31,13 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <table class="table table-bordered table-responsive-sm mt-5">
+            <div class="row col-10 pl-5 ml-4">
+              <table class="table table-bordered table-responsive-sm mt-3 border-dark border">
                 <tbody id="myTable">
                     {{#each stations}}
                     <tr>
-                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{nameEmployed}}</th>
-                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{toleranceTime}}</th>
-                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{status}}</th>
-                    <th width="40" scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">. . .</th>
+                    <th scope="row" class="font-book text-center" onclick="location.href='/onlineTracking/user/{{id}}'">{{nameEmployed}}</th>
+                    <th scope="row" class="font-book text-center " onclick="location.href='/onlineTracking/user/{{id}}'">{{dataesp}}</th>
                     </tr>
                     {{/each}}
                 </tbody>
