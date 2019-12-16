@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 
 const sensorSchema = new mongoose.Schema({
     data: Number,
-});
+    idesp: String,
+    idmac: String
+}, {timestamps: true, static: false});
  // dados:number
  //}, {tmerstamps: true, static: false});
 const SensorModel = mongoose.model('Sensor', sensorSchema);
@@ -82,6 +84,21 @@ class Sensor {
        });
      });
     }
+
+    /**
+     * Get a Sensor by it's id
+     * @param {string} idesp - Sensor Id
+     * @returns {Object} - Sensor Document Data
+     */
+    static findOneById(id) {
+      return new Promise((resolve, reject) => {
+        SensorModel.find({idesp :  id}).sort({createdAt: -1}).exec().then((result) => {
+          resolve(result[0]);
+        }).catch((err) => {
+          reject(err);
+        });
+      });
+    }
 }
 
-  module.exports = sensor;
+  module.exports = Sensor;

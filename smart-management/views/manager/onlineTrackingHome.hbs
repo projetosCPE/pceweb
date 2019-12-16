@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+<meta http-equiv="refresh" content="30">
 
 <div class="movap-titulo">
   <h4 align="left">ACOMPANHAMENTO ONLINE</h4>
@@ -17,7 +17,7 @@
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">POR DATA</a>
-                    <a class="dropdown-item" href="#">POR MEC</a>
+                    <a class="dropdown-item" href="#">POR MAC</a>
                     <a class="dropdown-item" href="#">POR ...</a>
                     <div class="dropdown-divider"></div>
                 </div>
@@ -31,16 +31,13 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <table class="table table-bordered table-responsive-sm mt-5">
+            <div class="row col-10 pl-5 ml-4">
+              <table class="table table-bordered table-responsive-sm mt-3 border-dark border">
                 <tbody id="myTable">
                     {{#each stations}}
                     <tr>
-                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{nameEmployed}}</th>
-                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{toleranceTime}}</th>
-                    <th scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">{{status}}</th>
-                    <th width="40" scope="row" class="font-book text-center col-4" onclick="location.href='/onlineTracking/user/{{id}}'">. . .</th>
+                    <th scope="row" class="font-book text-center" onclick="location.href='/onlineTracking/user/{{id}}'">{{nameEmployed}}</th>
+                    <th scope="row" class="font-book text-center " onclick="location.href='/onlineTracking/user/{{id}}'">{{dataesp}}</th>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -49,3 +46,5 @@
          </div>
    </div>
 </div>
+<br><br>
+<br>
