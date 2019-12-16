@@ -1,3 +1,6 @@
+<script src="/javascripts/search.js"></script>
+
+
 <div class="movap-titulo">
   <h4 align="left">CADASTRO DOS SETORES</h4>
   <hr>
@@ -17,14 +20,10 @@
                     <div class="dropdown-divider"></div>
                 </div>
             </div>
+            <br>
             <div class="col">
                 <div class="input-group">
-                  <div class="input-group">
-                      <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search" style="border-right: none;">
-                      <div class="input-group-append">
-                          <div class="input-group-text" style="background-color: #FFF"><i class="fas fa-search"> </i></div>
-                      </div>
-                  </div>
+                    <input  id="myInput" class="form-control" type="text" onkeyup="myFunction()" placeholder="Pesquisar" aria-label="Search" style="border-right: none;">
                 </div>
             </div>
             <table class="table table-bordered table-responsive-sm mt-4">
