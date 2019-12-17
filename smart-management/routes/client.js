@@ -1,5 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
+const auth = require('./middleware/auth');
 const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
@@ -7,11 +8,11 @@ const Manager = require('../models/manager');
 
 const router = express.Router();
 
-router.get('/signup', function(req, res, next) {
+router.get('/signup',auth.isAuthenticated,auth.isADM, function(req, res, next) {
   res.render('admin/clientsRegistration', { title: 'Cadastro de Clientes' });
 });
 
-router.get('/list', (req, res) => {
+router.get('/list',auth.isAuthenticated,auth.isADM, (req, res) => {
   Client.getAll().then((clients) => {
     res.render('admin/clientsList', { title: 'Lista de Clientes', clients });
   }).catch((error)=> {
@@ -20,21 +21,21 @@ router.get('/list', (req, res) => {
   });
 });
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id',auth.isAuthenticated,auth.isADM, (req, res) => {
   Client.getById(req.params.id).then((client) => {
     res.render('admin/clientsRegistrationEdit', { title: 'Edição de Perfil', client });
   });
 });
 
-router.get('/devices', (req, res) => {
+router.get('/devices',auth.isAuthenticated,auth.isADM, (req, res) => {
   res.render('admin/clientsXdevicesHome', { title: 'Clientes X  Aparelhos' });
 });
 
-router.get('/clientsXdevices', (req, res) => {
+router.get('/clientsXdevices',auth.isAuthenticated,auth.isADM, (req, res) => {
   res.render('admin/clientsXdevices', { title: 'Clientes X  Aparelhos' });
 });
 
-router.post('/signup', function(req, res, next) {
+router.post('/signup',auth.isAuthenticated,auth.isADM, function(req, res, next) {
   const ativa = req.body.client;
   ativa.password = "123456";    //Senha padrão
   ativa.type = "Cliente";
@@ -51,7 +52,7 @@ router.post('/signup', function(req, res, next) {
   });
 });
 
-router.post('/:id', (req, res) => {
+router.post('/:id',auth.isAuthenticated,auth.isADM, (req, res) => {
   const client = req.body.client;
   Client.update(req.params.id, client).then(() => {
     res.redirect('/client/list');

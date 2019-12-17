@@ -1,5 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
+const auth = require('./middleware/auth');
 const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
@@ -10,13 +11,13 @@ const Sector = require('../models/sector');
 
 const router = express.Router();
 
-router.get('/signup', function(req, res, next) {
+router.get('/signup',auth.isAuthenticated,auth.isClienteADM, function(req, res, next) {
   Manager.getAll().then((managers) => {
     res.render('client/registerSectors', { title: 'Cadastro de Setores', layout: 'layoutdashboardclientadm', managers});
   })
 });
 
-router.post('/signup', function(req, res, next) {
+router.post('/signup',auth.isAuthenticated,auth.isClienteADM, function(req, res, next) {
   const ativa = req.body.sector;
   Manager.getById(ativa.idManager).then((gestor) => {
     ativa.manager = gestor.name;
@@ -32,7 +33,7 @@ router.post('/signup', function(req, res, next) {
   });
 });
 
-router.get('/list', (req, res) => {
+router.get('/list',auth.isAuthenticated,auth.isClienteADM, (req, res) => {
   Sector.getAll().then((sectors)=>{
     res.render('client/sectorslist', { title: 'Lista de Setores',layout: 'layoutdashboardclientadm', sectors });
   }).catch((error)=> {
@@ -41,7 +42,7 @@ router.get('/list', (req, res) => {
   });
 });
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id',auth.isAuthenticated,auth.isClienteADM, (req, res) => {
   Sector.getById(req.params.id).then((sector) => {
     Manager.getAll().then((managers) => {
       res.render('client/registerSectorsEdit', { title: 'Edição de Setores', layout:'layoutdashboardclientadm',sector,managers });
@@ -52,7 +53,7 @@ router.get('/edit/:id', (req, res) => {
   });
 });
 
-router.post('/:id', (req, res) => {
+router.post('/:id',auth.isAuthenticated,auth.isClienteADM, (req, res) => {
   const sector = req.body.sector;
   console.log(sector);
   Manager.getById(sector.idManager).then((gestor) => {
