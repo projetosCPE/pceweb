@@ -5,6 +5,7 @@ const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
 const Manager = require('../models/manager');
+const User = require('../models/user');
 
 const router = express.Router();
 
@@ -35,13 +36,19 @@ router.get('/clientsXdevices',auth.isAuthenticated,auth.isADM, (req, res) => {
   res.render('admin/clientsXdevices', { title: 'Clientes X  Aparelhos' });
 });
 
-router.post('/signup',auth.isAuthenticated,auth.isADM, function(req, res, next) {
+router.post('/signup', function(req, res, next) {
   const ativa = req.body.client;
-  ativa.password = "123456";    //Senha padrão
-  ativa.type = "Cliente";
-  firebase.auth().createUserWithEmailAndPassword(ativa.email, ativa.password).then((user) => {
-    delete ativa.password;
+  ativa.type = "ClienteADM";
+  firebase.auth().createUserWithEmailAndPassword(ativa.email, ativa.password).then((userF) => {
+    ativa.uid = userF.user.uid;
+    var usuario = ativa;
     Client.create(ativa).then((id) => {
+      User.create(usuario).then((id) =>{
+        console.log("Usuario deu bom");
+      }).catch((error) => {
+        console.log(error);
+        res.redirect('/error');
+      });
       res.redirect('/client/list');
     }).catch((error) => {
       console.log(error);
