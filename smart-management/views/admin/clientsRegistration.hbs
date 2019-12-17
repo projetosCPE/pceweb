@@ -1,3 +1,5 @@
+<script src="/javascripts/password.js"></script>
+
 <div class="box-clientsRegistration">
   <div class="movap-titulo">
     <h4 align="left">CADASTRO DE CLIENTES</h4>
@@ -76,10 +78,6 @@
       </div>
     </div>
     <div class="form-group col-lg-8">
-      <p class="movap-nomes" align="left">E-mail</p>
-      <input type="email" class="form-control" id="intentificação" name="client[email]" placeholder="" required>
-    </div>
-    <div class="form-group col-lg-8">
       <p class="movap-nomes" align="left">Telefone</p>
       <input type="tel" class="form-control" id="intentificação" name="client[phone]"placeholder="" required>
     </div>
@@ -94,8 +92,20 @@
         <option>Outros</option>
       </select>
     </div>
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">E-mail</p>
+      <input type="email" class="form-control" id="intentificação" name="client[email]" placeholder="" required>
+    </div>
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">Senha</p>
+      <input type="password" class="form-control" id="password" name="client[password]"placeholder="" required>
+    </div>
+    <div class="form-group col-lg-8">
+      <p class="movap-nomes" align="left">Confirmação de Senha</p>
+      <input type="password" class="form-control" id="confirm_password" placeholder="" required>
+    </div>
     <div class="form-group justify-content-start col-md-8 d-flex movap">
-      <input type="submit" value="CONFIRMAR" class="btn btn-primary" >
+      <input type="submit" value="CONFIRMAR" class="btn btn-primary" onclick="return validatePassword()">
     </div>
   </form>
   <br><br><br><br>
