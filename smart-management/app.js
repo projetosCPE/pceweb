@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
-
+const flash = require('express-flash');
 const indexRouter = require('./routes/index');
 const deviceRouter = require('./routes/device');
 const clientRouter = require('./routes/client');
@@ -57,9 +57,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(session({
+  secret: 'some-private-cpe-key',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
@@ -67,6 +72,7 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/device', deviceRouter);
@@ -82,30 +88,6 @@ app.use('/sector', sector);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
-/**
- * Application Configuration
- */
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(session({
-  secret: 'some-private-cpe-key',
-  resave: true,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 3600000
-  }
-}));
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true
-}));
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 // error handler
 app.use(function(err, req, res, next) {

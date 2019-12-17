@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET dashboard page. */
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard',auth.isAuthenticated,(req, res) => {
   console.log(req.session);
   res.render('dashboard', { title: 'Home' });
 });
@@ -28,19 +28,47 @@ router.post('/login', (req, res) => {
     User.getByUid(userID.user.uid).then((currentLogged) => {
       // req.session.user.uid = currentLogged.user.uid;
       // req.session.email = currentLogged.user.email;
-      if(currentLogged.type == "Gestor"){
+      const userR = {
+        name: currentLogged.name,
+        mid: currentLogged.mid,
+        uid: currentLogged.uid,
+        email: currentLogged.email,
+        type: currentLogged.type
+      };
+      req.session.user = currentLogged;
+      console.log(req.session.user);
+      if(userR.type == "Gestor"){
         res.redirect('/logUse');
       }
-      if(currentLogged.type == "ClienteADM"){
+      if(userR.type == "ClienteADM"){
         res.redirect('/manager/list');
       }
-      if(currentLogged.type == "ADM"){
+      if(userR.type == "ADM"){
         res.redirect('/client/list');
       }
+    }).catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message
     });
   }).catch((error) => {
-    console.log(error);
-    res.redirect('/login');
+      switch (error.code) {
+     case 'auth/wrong-password':
+       req.flash('danger', 'Senha incorreta.');
+       break;
+     case 'auth/user-not-found':
+       req.flash('danger', 'Email não cadastrado.');
+       break;
+     case 'auth/network-request-failed':
+       req.flash('danger', 'Falha na internet. Verifique sua conexão de rede.');
+       break;
+     default:
+       req.flash('danger', 'Erro indefinido.');
+   }
+   console.log(`Error Code: ${error.code}`);
+   console.log(`Error Message: ${error.message}`);
+   res.redirect('/');
+
   });
 });
 
@@ -50,7 +78,7 @@ router.get('/logout', (req, res, next) => {
   firebase.auth().signOut().then(() => {
       // delete req.session.fullName;
       // delete req.session.userId;
-      // delete req.session.email;
+      delete req.session.user;
       res.redirect('/');
     }).catch((error) => {
       console.log(error);

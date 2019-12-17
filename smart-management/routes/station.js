@@ -1,5 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
+const auth = require('./middleware/auth');
 const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
@@ -7,15 +8,15 @@ const Manager = require('../models/manager');
 
 const router = express.Router();
 
-router.get('/signup', (req, res) => {
+router.get('/signup',auth.isAuthenticated,auth.isManager, (req, res) => {
   res.render('manager/registerWorkStation', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboardmanager' });
 });
 
-router.get('/', (req, res) => {
+router.get('/',auth.isAuthenticated,auth.isManager, (req, res) => {
   res.render('manager/registerWorkStationHome', { title: 'Cadastro Estação de Trabalho', layout: 'layoutdashboardmanager' });
 });
 
-router.get('/list', (req, res) => {
+router.get('/list',auth.isAuthenticated,auth.isManager, (req, res) => {
   Station.getAll().then((stations) => {
     console.log(stations);
     res.render('manager/registerWorkStationHome', { title: 'Lista de Estações de Trabalho', layout: 'layoutdashboardmanager', stations });
@@ -26,7 +27,7 @@ router.get('/list', (req, res) => {
 });
 
 
-router.get('/movimentation/:id', (req, res) => {
+router.get('/movimentation/:id',auth.isAuthenticated,auth.isManager, (req, res) => {
   Device.getById(req.params.id).then((device) => {
     Client.getById(device.client).then((client) => {
       console.log(client);
@@ -35,7 +36,7 @@ router.get('/movimentation/:id', (req, res) => {
   });
 });
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id',auth.isAuthenticated,auth.isManager, (req, res) => {
   Station.getById(req.params.id).then((station) => {
     console.log(station);
     Manager.getById(station.manager).then((manager) => {
@@ -45,7 +46,7 @@ router.get('/edit/:id', (req, res) => {
   });
 });
 
-router.post('/signup', function(req, res, next){
+router.post('/signup',auth.isAuthenticated,auth.isManager, function(req, res, next){
   const ativa = req.body.station;
   Station.create(ativa).then((id) => {
     res.redirect('/station/list');
@@ -54,7 +55,7 @@ router.post('/signup', function(req, res, next){
   });
 });
 
-router.post('/:id', (req, res) => {
+router.post('/:id',auth.isAuthenticated, auth.isManager,(req, res) => {
   const station = req.body.station;
   const stationId = req.params.id;
   Station.getById(req.params.id).then((oldStation) => {

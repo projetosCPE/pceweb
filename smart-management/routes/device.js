@@ -1,5 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
+const auth = require('./middleware/auth');
 const Device = require('../models/devices');
 const Client = require('../models/clients');
 const Station = require('../models/station');
@@ -8,7 +9,7 @@ const Sensor = require('../models/sensor')
 
 const router = express.Router();
 
-router.get('/list', (req, res) => {
+router.get('/list',auth.isAuthenticated,auth.isADM, (req, res) => {
   Device.getAll().then((devices) => {
     res.render('admin/deviceList', { title: 'Cadastro de Aparelho', devices });
   }).catch((error) => {
@@ -17,7 +18,7 @@ router.get('/list', (req, res) => {
   });
 });
 
-router.get('/movimentation/:id', (req, res) => {
+router.get('/movimentation/:id',auth.isAuthenticated,auth.isADM, (req, res) => {
   Device.getById(req.params.id).then((device) => {
     Client.getById(device.client).then((client) => {
       console.log(client);
@@ -26,11 +27,11 @@ router.get('/movimentation/:id', (req, res) => {
   });
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup',auth.isAuthenticated,auth.isADM, (req, res) => {
   res.render('admin/deviceRegistration', { title: 'Cadastro de Aparelho' });
 });
 
-router.post('/signup', (req, res) => {
+router.post('/signup',auth.isAuthenticated,auth.isADM, (req, res) => {
   const ativa = req.body.device;
   Device.create(ativa).then((id) => {
     console.log("Aparelho criado com sucesso!");
@@ -78,7 +79,7 @@ router.post('/receiveData::idesp::data::idmac', (req, res) =>{
 });
 
 
-router.post('/:id', (req, res) => {
+router.post('/:id',auth.isAuthenticated,auth.isADM, (req, res) => {
   const device = req.body.device;
   const deviceId = req.params.id;
   Device.getById(req.params.id).then((oldDevice) => {
