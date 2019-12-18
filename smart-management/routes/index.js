@@ -37,8 +37,10 @@ router.post('/login', (req, res) => {
       };
       req.session.user = currentLogged;
       console.log(req.session.user);
+      console.log('-------------------------------------------');
       if(userR.type == "Gestor"){
         res.redirect('/logUse');
+        console.log('---------------entrou-------------------');
       }
       if(userR.type == "ClienteADM"){
         res.redirect('/manager/list');
@@ -49,25 +51,24 @@ router.post('/login', (req, res) => {
     }).catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;
-      var errorMessage = error.message
+      var errorMessage = error.message;
+      console.log('---------------error de tipo-------------------');
     });
   }).catch((error) => {
-      switch (error.code) {
-     case 'auth/wrong-password':
-       req.flash('danger', 'Senha incorreta.');
-       break;
-     case 'auth/user-not-found':
-       req.flash('danger', 'Email não cadastrado.');
-       break;
-     case 'auth/network-request-failed':
-       req.flash('danger', 'Falha na internet. Verifique sua conexão de rede.');
-       break;
-     default:
-       req.flash('danger', 'Erro indefinido.');
-   }
-   console.log(`Error Code: ${error.code}`);
-   console.log(`Error Message: ${error.message}`);
-   res.redirect('/');
+    var erros = []
+    if(!req.body.email || typeof req.body.email == undefined || req.body.email == null){
+        console.log('AAAAAAAAAAAAAAAAAAAAAAA-');
+        erros.push({texto: "EMAIL INVÁLIDO"})
+    }
+    if(!req.body.password || typeof req.body.password == undefined || req.body.password == null){
+      erros.push({texto: "SENHA INVÁLIDA"})
+    }
+    if(erros.length > 0){
+      console.log('RENDEEEEERRAAA');
+        req.flash("error_msg","nao criado")
+        res.render("login", {erros: erros, title: 'Login', layout: 'layout'})
+
+    }
 
   });
 });

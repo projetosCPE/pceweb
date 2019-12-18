@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
-const flash = require('express-flash');
+const flash = require('connect-flash');
 const indexRouter = require('./routes/index');
 const deviceRouter = require('./routes/device');
 const clientRouter = require('./routes/client');
@@ -59,12 +59,20 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(cookieParser('secret'));
 app.use(session({
   secret: 'some-private-cpe-key',
   resave: true,
   saveUninitialized: true
 }));
+app.use(flash());
+
+app.use((req, res, next)=>{
+  res.locals.success_msg = req.flash("success_msg")
+  res.locals.error_msg = req.flash("error_msg")
+ next()
+});
+
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
@@ -72,7 +80,7 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(flash());
+
 
 app.use('/', indexRouter);
 app.use('/device', deviceRouter);
@@ -83,6 +91,10 @@ app.use('/offlineTracking', offlineTrackingRouter);
 app.use('/onlineTracking', onlineTrackingRouter);
 app.use('/logUse', logUseRouter);
 app.use('/sector', sector);
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
