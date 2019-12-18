@@ -72,7 +72,21 @@ router.post('/login', (req, res) => {
   });
 });
 
+router.get('/forgotPassword', (req, res) => {
+  res.render('forgotPassword', {title:'Esqueci Minha Senha',layout:'layout'});
+});
 
+router.post('/forgotPassword', (req, res) => {
+  const emailAddress = req.body.user;
+  console.log(emailAddress);
+  firebase.auth().sendPasswordResetEmail(emailAddress.email).then(function() {
+    res.redirect('/');
+    req.flash('success', 'Email enviado');
+  }).catch((error) => {
+    console.log(error);
+    res.redirect('/error');
+  });
+});
 // GET /logout
 router.get('/logout', (req, res, next) => {
   firebase.auth().signOut().then(() => {
