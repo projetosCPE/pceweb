@@ -59,7 +59,31 @@ router.post('/signup', function(req, res, next) {
   });
 });
 
-router.post('/:id',auth.isAuthenticated,auth.isADM, (req, res) => {
+router.post('/delete/:id' , (req,res) => {
+  Client.getById(req.params.id).then((client) => {
+    Client.delete(req.params.id).then(() =>{
+      User.getByUid(client.uid).then((user) => {
+        User.delete(user.id).then(() => {
+          res.redirect('/client/list');
+        }).catch((error) => {
+          console.log(error);
+          res.redirect('/error');
+        });
+      }).catch((error) => {
+        console.log(error);
+        res.redirect('/error');
+      });
+    }).catch((error) => {
+      console.log(error);
+      res.redirect('/error');
+    });
+  }).catch((error) => {
+    console.log(error);
+    res.redirect('/error');
+  });
+});
+
+router.post('/:id', (req, res) => {
   const client = req.body.client;
   Client.update(req.params.id, client).then(() => {
     res.redirect('/client/list');
