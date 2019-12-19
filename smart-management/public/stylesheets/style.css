@@ -7198,5 +7198,48 @@ a {
 .div-home {
   height: 350px;
   overflow: auto; }
+  .div-home .textbox {
+    width: 85%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 10px;
+    margin: 8px 28px;
+    align-items: center;
+    border: 2px solid #254085;
+    border-radius: 6px;
+    justify-content: center; }
+  .div-home .textbox input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    width: 100%;
+    margin: 0 10px;
+    align-items: center; }
+
+.password-box {
+  width: 400px;
+  height: 340px;
+  position: absolute;
+  top: 65%;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #254085;
+  background: #FFFFFF;
+  padding: 10px; }
+
+.password-box h1 {
+  color: #254085;
+  font-size: 40px;
+  border-bottom: 4px solid #90EE90;
+  margin-bottom: 13px 0; }
+
+.wrapper {
+  background-image: url("/images/fundo7.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 28em;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

@@ -100,7 +100,7 @@ class Client {
    */
    static delete(id) {
     return new Promise((resolve, reject) => {
-      ClientModel.findByIdAndUpdate(id, { deleted: 1 }).then(() => {
+      ClientModel.findOneAndDelete({_id: id}).then(() => {
         resolve();
       }).catch((err) => {
         reject(err);

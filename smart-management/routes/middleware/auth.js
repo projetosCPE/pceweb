@@ -13,45 +13,45 @@ module.exports = {
       next();
     }
     else {
-      res.redirect('/login');
+      res.redirect('/');
     }
   },
 
-// Essa função confere se o tipo do usuário é "produtor" e permite que ele entre nas páginas disponíveis apenas para produtores
-// A const type identifica qual o tipo do usuário que está logado e compara essa string com "Produtor", se o usuário for produtor ele poderá acessar a página desejada, caso contrário, ele é redirecionado para a página de clientes
-  isProducer: (req, res, next) => {
-    const type = req.session.user;
-    if(type === 'Produtor'){
+// Essa função confere se o tipo do usuário é "ClienteADM" e permite que ele entre nas páginas disponíveis apenas para ClienteADM
+// A const type identifica qual o tipo do usuário que está logado e compara essa string com "ClienteADM", se o usuário for ClienteADM ele poderá acessar a página desejada, caso contrário, ele é redirecionado para a página de login
+  isClienteADM: (req, res, next) => {
+    const type = req.session.user.type;
+    if(type === 'ClienteADM'){
       next();
     }
     else {
-      res.redirect('/user');
+      res.redirect('/');
     }
   },
 
-// Essa função confere se o tipo do usuário é "gerente" e permite que ele entre nas páginas disponíveis apenas para gerentes
-// A const type identifica qual o tipo do usuário que está logado e compara essa string com "Gerencia", se o usuário for gerente ele poderá acessar a página desejada, caso contrário, ele é redirecionado para a página de clientes
+// Essa função confere se o tipo do usuário é "ADM" e permite que ele entre nas páginas disponíveis apenas para ADM
+// A const type identifica qual o tipo do usuário que está logado e compara essa string com "ADM", se o usuário for gerente ele poderá acessar a página desejada, caso contrário, ele é redirecionado para a página de login
+
+  isADM: (req, res, next) => {
+    const type = req.session.user.type;
+    if(type === 'ADM'){
+      next();
+    }
+    else {
+      res.redirect('/');
+    }
+  },
+
+// Essa função confere se o tipo do usuário é "Gestor" e permite que ele entre nas páginas disponíveis apenas para gestores
+// A const type identifica qual o tipo do usuário que está logado e compara essa string com "Gestor", se o usuário for convenio ele poderá acessar a página desejada, caso contrário, ele é redirecionado para a página de login
 
   isManager: (req, res, next) => {
-    const type = req.session.user;
-    if(type === 'Gerencia'){
+    const type = req.session.user.type;
+    if(type === 'Gestor'){
       next();
     }
     else {
-      res.redirect('/user');
-    }
-  },
-
-// Essa função confere se o tipo do usuário é "convenio" e permite que ele entre nas páginas disponíveis apenas para convenios
-// A const type identifica qual o tipo do usuário que está logado e compara essa string com "Convenio", se o usuário for convenio ele poderá acessar a página desejada, caso contrário, ele é redirecionado para a página de clientes
-
-  isConvenio: (req, res, next) => {
-    const type = req.session.user;
-    if(type === 'Convenio'){
-      next();
-    }
-    else {
-      res.redirect('/user');
+      res.redirect('/');
     }
   },
 
