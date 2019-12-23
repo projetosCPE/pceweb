@@ -171,7 +171,7 @@ class Station {
    */
    static delete(id) {
     return new Promise((resolve, reject) => {
-      StationModel.findByIdAndUpdate(id, { deleted: 1 }).then(() => {
+      StationModel.findOneAndDelete({_id: id}).then(() => {
         resolve();
       }).catch((err) => {
         reject(err);
