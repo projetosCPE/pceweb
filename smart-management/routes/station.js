@@ -57,6 +57,15 @@ router.post('/signup', function(req, res, next){
   });
 });
 
+router.post('/delete/:id' , (req,res) => {
+  Station.delete(req.params.id).then((resolve) => {
+    res.redirect('/station/list');
+  }).catch((error) => {
+    console.log(error);
+    res.redirect('/error');
+  });
+});
+
 router.post('/:id',(req, res) => {
   const station = req.body.station;
   const stationId = req.params.id;
