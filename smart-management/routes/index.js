@@ -34,18 +34,21 @@ router.post('/login', (req, res) => {
     //if(erros.length > 0){
     //console.log('PASSOU POR AQUI')
     //res.redirect('/');
-    //} else 
+    //} else
     //{
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((userID) => {
     User.getByUid(userID.user.uid).then((currentLogged) => {
       if (userID) {
-        req.session.userUid =userID.user.uid;
-        req.session.email = userID.user.email;
-        req.session.type = userID.user.type;
-
+        req.session.userUid =currentLogged.uid;
+        req.session.email = currentLogged.email;
+        req.session.type = currentLogged.type;
+        req.session.id_t = currentLogged.id_t;
+        console.log(req.session.type);
+        console.log(req.session);
         console.log('-------------------------------------------');
         if(currentLogged.type == "Gestor"){
-          res.redirect('/logUse');
+          console.log(currentLogged);
+          res.redirect('/station/list');
           console.log('---------------entrou-------------------');
         }
         if(currentLogged.type == "ClienteADM"){
@@ -81,7 +84,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-    
+
 //res.render('login', { title: 'Login', layout: 'layout', erros: erros});
 //{{#each erros}}
  //   <div class='alert alert-danger'>{{texto}}</div>
@@ -109,7 +112,7 @@ router.get('/logout', (req, res, next) => {
   firebase.auth().signOut().then(() => {
       // delete req.session.fullName;
       // delete req.session.userId;
-      delete req.session.user;
+      delete req.session;
       res.redirect('/');
     }).catch((error) => {
       console.log(error);
